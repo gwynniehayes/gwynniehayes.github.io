@@ -99,7 +99,6 @@ frogs_static |>
   theme_linedraw()
 ```
 
-
 ## Joining for Interactive Polygons
 
 ```{r}
