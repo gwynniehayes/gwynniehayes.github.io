@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gwynnie and Aria">
+
+<title>Mini Project 2 – gwynnie’s epic website!</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">gwynnie’s epic website!</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Quarto Website Notes!</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./miniproj1.html"> 
+<span class="menu-text">Mini Project #1</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#motivations-behind-our-data" id="toc-motivations-behind-our-data" class="nav-link active" data-scroll-target="#motivations-behind-our-data">Motivations Behind our Data</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#future-uses-of-this-data" id="toc-future-uses-of-this-data" class="nav-link" data-scroll-target="#future-uses-of-this-data">Future Uses of this Data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mini Project 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gwynnie and Aria </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="motivations-behind-our-data" class="level2">
+<h2 class="anchored" data-anchor-id="motivations-behind-our-data">Motivations Behind our Data</h2>
+<p>After doing our amazing research on salmon we wanted to look at more data from Washington, and one thing that is becoming very prevalent is wildfires, both of us have been in very close proximity to wildfires and have seen the aftermath of many of them. We want to look at the amount of forest land that was lost or affected by forest fires. Thinking through this data we quickly found a data set of the land area affected by fires, we then realized that it would be interesting to see the amount of forested area that was affected by the fires and then also the total land area that was affected in the county as a whole.</p>
+</section>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<p>We are interested in looking at the total land area that is affected by forest fires in our home state. We wanted to not only look at the forest land that was effected by also the amount of land area that is forested and then also affected by the fire.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first table came from wikipedia, which is an allowed source</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is_valid_robotstxt</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_Washington_wildfires"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading the html of the website</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>wildfires <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_Washington_wildfires"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#scraping the table</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>wildfiretables <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(wildfires, <span class="at">css =</span> <span class="st">"table"</span>) </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#our first raw set of tables</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">html_table</span>(wildfiretables, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+# A tibble: 0 × 2
+# ℹ 2 variables:  &lt;lgl&gt;,
+#   This list is incomplete; you can help by adding missing items.  (August 2015) &lt;lgl&gt;
+
+[[2]]
+# A tibble: 11 × 11
+    Year `Fire name`       `Complex name` County `Start dateCause` `Size(acres)`
+   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt;        
+ 1  2024 Beam Road Fire[2] ""             Yakima "June 15"         8,542 acres …
+ 2  2024 Big Horn Fire[3]… ""             Klick… "July 22, unknow… 51,569 acres…
+ 3  2024 Black Canyon Fir… ""             Yakima "July 22, unknow… 9,211 acres …
+ 4  2024 Cougar Creek Fir… ""             Asoti… "July 15, unknow… 20,699 acres…
+ 5  2024 Pioneer Fire[8]   ""             Chelan "June 8, human c… 36,763 acres…
+ 6  2024 Retreat Fire[9][… ""             Yakima "July 23, cause … 44,588 acres…
+ 7  2024 Swawilla Fire[11… ""             Ferry… "July 17, Lightn… 53,462 acres…
+ 8  2023 Oregon Fire[13]   ""             Spoka… ""                10,817 acres…
+ 9  2023 Gray Fire[15]     ""             Spoka… ""                10,085[15][1…
+10  2020 Cold Springs Can… "Labor Day fi… Okano… ""                Over 410,000…
+11  2020 Whitney Fire      ""             Linco… "September 7"     127,430      
+# ℹ 5 more variables: Structureslost &lt;chr&gt;, Deaths &lt;chr&gt;, Injuries &lt;int&gt;,
+#   Notes &lt;chr&gt;, Image &lt;chr&gt;
+
+[[3]]
+# A tibble: 66 × 11
+    Year `Fire name`           `Complex name`  County `Start date` `Size(acres)`
+   &lt;int&gt; &lt;chr&gt;                 &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
+ 1  2019 243 Command Fire[18]  ""              Grant  "June 3"     20,380 acres…
+ 2  2019 Cold Creek Fire[19]   ""              Benton ""           42,000 acres…
+ 3  2019 Pipeline Fire         ""              Kitti… ""           6,515 acres …
+ 4  2019 Powerline Fire[20]    ""              Grant  ""           7,800 acres …
+ 5  2019 Williams Flats Fire   ""              Okano… ""           44,446 acres…
+ 6  2016 Hart Fire             ""              Linco… ""           18,220       
+ 7  2016 Range 12 Fire[21]     ""              Yakima ""           177,210      
+ 8  2016 2016 Snake River Fire ""              Garfi… ""           11,452 acres…
+ 9  2016 Spokane Complex Fire  "Spokane Compl… Spoka… ""           7,251 acres …
+10  2015 Black Canyon Fire[22] "Chelan Comple… Chelan "August 14"  6,761        
+# ℹ 56 more rows
+# ℹ 5 more variables: Structureslost &lt;chr&gt;, Deaths &lt;int&gt;, Injuries &lt;int&gt;,
+#   Notes &lt;chr&gt;, Image &lt;chr&gt;
+
+[[4]]
+# A tibble: 55 × 11
+    Year `Fire name`            `Complex name` County `Start date` `Size(acres)`
+   &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
+ 1  2009 Dry Creek Complex[50]  "Dry Creek Co… Bento… ""           48,902       
+ 2  2009 Oden Road Fire[50]     ""             Okano… ""           9,607        
+ 3  2008 Badger Mountain Fire[… ""             Chela… ""           15,023       
+ 4  2008 Cold Springs Fire      ""             Klick… ""           7,729        
+ 5  2008 Columbia River Road F… ""             Okano… ""           22,115       
+ 6  2008 Smith Lake Fire[64]    ""             Dougl… ""           12,513       
+ 7  2008 Spokane Valley Fire[6… ""             Spoka… ""           1,008        
+ 8  2008 Swanson Lake Fire[50]  ""             Linco… ""           19,090       
+ 9  2007 Domke Lake Fire[50]    ""             Okano… ""           11,900       
+10  2007 Easy Street Fire[50]   ""             Chelan ""           5,209        
+# ℹ 45 more rows
+# ℹ 5 more variables: Structureslost &lt;int&gt;, Deaths &lt;int&gt;, Injuries &lt;chr&gt;,
+#   Notes &lt;chr&gt;, Image &lt;chr&gt;
+
+[[5]]
+# A tibble: 28 × 11
+    Year `Fire name`            `Complex name` County `Start date` `Size(acres)`
+   &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
+ 1  1998 Cleveland Fire[84]     ""             Klick… ""           18,500       
+ 2  1998 Rattle Snake Ridge Fi… ""             Yakima ""           18,000       
+ 3  1997 Olympia Command Fire[… ""             Benton ""           5,500        
+ 4  1997 Pow Wah Kee Fire[1]    "August 3"     Asotin ""           8,000        
+ 5  1996 Baird Springs Fire[1]  ""             Grant  "August 2"   14,000       
+ 6  1996 Cold Creek Fire[50]    ""             Bento… ""           57,000       
+ 7  1994 Copper Butte Fire[96]  ""             Ferry  ""           10,473       
+ 8  1994 Rat Creek / Hatchery … ""             Chelan ""           43,000       
+ 9  1994 Tyee Creek Fire[98][9… ""             Chelan ""           135,000      
+10  1992 Castlerock Fire[1]     ""             Wenat… ""           3,500[100]   
+# ℹ 18 more rows
+# ℹ 5 more variables: Structureslost &lt;chr&gt;, Deaths &lt;chr&gt;, Injuries &lt;chr&gt;,
+#   Notes &lt;chr&gt;, Image &lt;chr&gt;
+
+[[6]]
+# A tibble: 39 × 10
+    Year `Fire name`            `Complex name` County `Start date` `Size(acres)`
+   &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
+ 1  2024 Bridge Creek Fire      ""             Ferry  "July 19"    3,998 acres …
+ 2  2016 Buck Creek             ""             Chelan "July 22"    1,987 acres …
+ 3  2015 231 Fire               ""             Steve… ""           1,138        
+ 4  2015 Twenty-One Mile Grade… ""             Ferry  ""           2,250        
+ 5  2014 Hansel Fire            ""             Chelan ""           1,016        
+ 6  2014 Little Bridge Fire     ""             Okano… "August 2"   4,896        
+ 7  2014 Lone Mountain Fire     ""             Chelan "July 14"    2,770        
+ 8  2012 Cashmere Fire          "Wenatchee Co… Chelan ""           2,651        
+ 9  2012 Highway 141 Fire[84]   ""             Klick… ""           1,644        
+10  2011 Salmon Fire[50]        ""             Okano… ""           1,631        
+# ℹ 29 more rows
+# ℹ 4 more variables: Structureslost &lt;int&gt;, Injuries &lt;int&gt;, Notes &lt;chr&gt;,
+#   Image &lt;chr&gt;
+
+[[7]]
+# A tibble: 0 × 2
+# ℹ 2 variables:  &lt;lgl&gt;,
+#   This list is incomplete; you can help by adding missing items.  (September 2015) &lt;lgl&gt;
+
+[[8]]
+# A tibble: 24 × 10
+   ``     Totalfires `Total area burned` `Total area burned` Structureslost  
+   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;               &lt;chr&gt;           
+ 1 ""     Totalfires Acres               Hectares            "Structureslost"
+ 2 "2002" 1,285      92,742              37,531              ""              
+ 3 "2003" 1,373      200,517             81,146              ""              
+ 4 "2004" 1,674      92,617              37,481              ""              
+ 5 "2005" 998        185,748             75,170              ""              
+ 6 "2006" 1,579      410,060             165,950             ""              
+ 7 "2007" 1,268      214,925             86,977              ""              
+ 8 "2008" 1,303      147,264             59,596              ""              
+ 9 "2009" 1,976      77,250              31,260              ""              
+10 "2010" 870        56,820              22,990              ""              
+# ℹ 14 more rows
+# ℹ 5 more variables: Fatalities &lt;chr&gt;, Injuries &lt;chr&gt;, Totalcost &lt;chr&gt;,
+#   Notes &lt;chr&gt;, Source &lt;chr&gt;
+
+[[9]]
+# A tibble: 12 × 2
+   .mw-parser-output .navbar{display:inline;font-size:8…¹ .mw-parser-output .n…²
+   &lt;chr&gt;                                                  &lt;chr&gt;                 
+ 1 "Pre-2014"                                             "Yacolt Burn (1902)\n…
+ 2 "2014"                                                 "Carlton Complex"     
+ 3 "2015"                                                 "Okanogan Complex"    
+ 4 "2016"                                                 "Range 12"            
+ 5 "2017"                                                 "Diamond Creek\nJack …
+ 6 "2018"                                                 "Soap Lake\nMaple Fir…
+ 7 "2019"                                                 "243 Command Fire\nLe…
+ 8 "2020"                                                 "Evans Canyon\nLabor …
+ 9 "2021"                                                 "Schneider Springs Fi…
+10 "2023"                                                 "Eagle Bluff Fire\nGr…
+11 "2024"                                                 "Pioneer Fire\nRetrea…
+12 "Category\n Commons"                                   "Category\n Commons"  
+# ℹ abbreviated names:
+#   ¹​`.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a&gt;span,.mw-parser-output .navbar a&gt;abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}html.skin-theme-clientpref-night .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}}@media print{.mw-parser-output .navbar{display:none!important}}vteWashington wildfires`,
+#   ²​`.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a&gt;span,.mw-parser-output .navbar a&gt;abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}html.skin-theme-clientpref-night .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}}@media print{.mw-parser-output .navbar{display:none!important}}vteWashington wildfires`
+
+[[10]]
+# A tibble: 3 × 2
+  `vteWildfires in the United States` `vteWildfires in the United States`       
+  &lt;chr&gt;                               &lt;chr&gt;                                     
+1 "States"                            "Alabama\nAlaska\nArizona\nArkansas\nCali…
+2 "Territories"                       "American Samoa\nGuam\nNorthern Mariana I…
+3 "Category\n Commons"                "Category\n Commons"                      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we had so many tables from one scrape to use, we created a small </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># function to choose the table from the list using its subset number, cleaned </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the names, remove unnecessary columns, and rename a common variables. Due to </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inconsistency, all variables were set set as character and then parsed for </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># numbers.</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>cleaninggg <span class="ot">&lt;-</span> <span class="cf">function</span>(table, i) {</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(table, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)[[i]]<span class="sc">|&gt;</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>notes, <span class="sc">-</span>image, <span class="sc">-</span>injuries, <span class="sc">-</span>complex_name) <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(structureslost, size_acres), as.character),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>           <span class="fu">across</span>(<span class="fu">c</span>(structureslost, size_acres), parse_number)) <span class="sc">|&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">"fire_size_acres"</span> <span class="ot">=</span> <span class="st">"size_acres"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the function for each of the times to </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the data out of the list from wikipedia into 5 (nearly) uniform datasets</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>twenty <span class="ot">&lt;-</span> <span class="fu">cleaninggg</span>(wildfiretables, <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="st">"start_date"</span> <span class="ot">=</span> <span class="st">"start_date_cause"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ten <span class="ot">&lt;-</span> <span class="fu">cleaninggg</span>(wildfiretables, <span class="dv">3</span>) </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>thousand <span class="ot">&lt;-</span> <span class="fu">cleaninggg</span>(wildfiretables, <span class="dv">4</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>nines <span class="ot">&lt;-</span> <span class="fu">cleaninggg</span>(wildfiretables, <span class="dv">5</span>) </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>minors <span class="ot">&lt;-</span> <span class="fu">cleaninggg</span>(wildfiretables, <span class="dv">6</span>) </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Binds all of the major fires into one dataset and removes deaths for </span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># consistency with the minor fires</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>majors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(twenty, ten, thousand, nines) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>deaths)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Adds a column that identifies is a fire was major or minor</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>minors[<span class="st">'fire_type'</span>] <span class="ot">=</span> <span class="st">"Minor"</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>majors[<span class="st">'fire_type'</span>] <span class="ot">=</span> <span class="st">"Major"</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Joins all fires together</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>fires <span class="ot">&lt;-</span> <span class="fu">rbind</span>(majors, minors)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+   year fire_name     county start_date fire_size_acres structureslost fire_type
+  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
+1  2024 Beam Road Fi… Yakima June 15               8542              0 Major    
+2  2024 Big Horn Fir… Klick… July 22, …           51569              0 Major    
+3  2024 Black Canyon… Yakima July 22, …            9211              0 Major    
+4  2024 Cougar Creek… Asoti… July 15, …           20699              4 Major    
+5  2024 Pioneer Fire… Chelan June 8, h…           36763              0 Major    
+6  2024 Retreat Fire… Yakima July 23, …           44588              5 Major    </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As most major fires burn throughout forests, we wanted to add in a dataset </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># about forest coverage per county, we were planning to make a for-loop for </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this, but all of the websites we tried to scrape weren't reading the actual </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number as it was stored as an image? So we found this website that stores it</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># all as a list</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">is_valid_robotstxt</span>(<span class="st">"https://data.workingforests.org/#"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>session <span class="ot">&lt;-</span> <span class="fu">bow</span>(<span class="st">"https://data.workingforests.org/#"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Scraped the county names as one list</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>county_title <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".countyName"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>county_title</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Statewide"           "Adams County"        "Asotin County"      
+ [4] "Benton County"       "Chelan County"       "Clallam County"     
+ [7] "Clark County"        "Columbia County"     "Cowlitz County"     
+[10] "Douglas County"      "Ferry County"        "Franklin County"    
+[13] "Garfield County"     "Grant County"        "Grays Harbor County"
+[16] "Island County"       "Jefferson County"    "King County"        
+[19] "Kitsap County"       "Kittitas County"     "Klickitat County"   
+[22] "Lewis County"        "Lincoln County"      "Mason County"       
+[25] "Okanogan County"     "Pacific County"      "Pend Oreille County"
+[28] "Pierce County"       "San Juan County"     "Skagit County"      
+[31] "Skamania County"     "Snohomish County"    "Spokane County"     
+[34] "Stevens County"      "Thurston County"     "Wahkiakum County"   
+[37] "Walla Walla County"  "Whatcom County"      "Whitman County"     
+[40] "Yakima County"      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scraped the forest coverage as another list</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>forest_cov <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".dataValueEmphasized"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>forest_cov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "22,983,438" "1,452"      "103,022"    "351"        "1,392,891" 
+ [6] "1,034,606"  "251,273"    "203,917"    "657,909"    "16,983"    
+[11] "1,072,722"  "1,733"      "100,933"    "6,706"      "1,120,182" 
+[16] "86,883"     "1,064,350"  "1,003,402"  "187,620"    "783,309"   
+[21] "516,397"    "1,374,647"  "69,114"     "552,926"    "1,982,401" 
+[26] "534,690"    "787,506"    "800,881"    "85,258"     "890,416"   
+[31] "996,021"    "1,065,150"  "318,506"    "1,149,289"  "329,638"   
+[36] "147,694"    "30,934"     "1,033,817"  "26,889"     "1,201,021" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Brought the 2 lists together as one tibble with 2 columns, removed " County"</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from name to synchronize with main table</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>forest_cover <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">county =</span> county_title, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">forest_coverage_acres =</span> forest_cov) <span class="sc">|&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">forest_coverage_acres =</span> <span class="fu">parse_number</span>(forest_coverage_acres))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Joins this forest coverage with our fire data by county. For ease of analysis</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># at this stage without knowing string analysis in detail (yet!), we removed all</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># rows that contained 2 counties by dropping NA's in forest coverage. This way </span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows should have a complete collection of county name, forest size, and </span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fire size. </span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>fullfires <span class="ot">&lt;-</span> fires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(forest_cover) <span class="sc">|&gt;</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(forest_coverage_acres) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(county)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fullfires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+   year fire_name     county start_date fire_size_acres structureslost fire_type
+  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
+1  2024 Beam Road Fi… Yakima "June 15"             8542              0 Major    
+2  2024 Big Horn Fir… Klick… "July 22,…           51569              0 Major    
+3  2024 Black Canyon… Yakima "July 22,…            9211              0 Major    
+4  2024 Pioneer Fire… Chelan "June 8, …           36763              0 Major    
+5  2024 Retreat Fire… Yakima "July 23,…           44588              5 Major    
+6  2023 Gray Fire[15] Spoka… ""                   10085            259 Major    
+# ℹ 1 more variable: forest_coverage_acres &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lastly, we also thought it would be good to include the size of the counties </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># themselves as a comparison to the size of the forest its fires, so we scraped </span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this table</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>counties <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Washington"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>countytable <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(counties, <span class="at">css =</span> <span class="st">"table"</span>) </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>countytable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (8)}
+[1] &lt;table class="infobox vevent" style="float: right; width: ;"&gt;&lt;tbody&gt;\n&lt;tr ...
+[2] &lt;table class="wikitable sortable sticky-header" style="text-align: center ...
+[3] &lt;table class="nowraplinks mw-collapsible mw-collapsed navbox-inner" style ...
+[4] &lt;table class="nowraplinks mw-collapsible autocollapse navbox-inner" style ...
+[5] &lt;table class="nowraplinks hlist mw-collapsible autocollapse navbox-inner" ...
+[6] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...
+[7] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...
+[8] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This identifies the table we want, cleans the names, removes part of the name</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ' County' for consistency, parses the sq. mi. and converts it to acres, and</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># selects just county and county size</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>countysize <span class="ot">&lt;-</span> <span class="fu">html_table</span>(countytable, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_size_acres =</span> <span class="fu">parse_number</span>(land_area_11) <span class="sc">*</span> <span class="dv">640</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(county, county_size_acres)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally ! We join this last table with the main dataset</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>final_fires <span class="ot">&lt;-</span> fullfires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(countysize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(county)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>final_fires</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 170 × 9
+    year fire_name    county start_date fire_size_acres structureslost fire_type
+   &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
+ 1  2024 Beam Road F… Yakima "June 15"             8542              0 Major    
+ 2  2024 Big Horn Fi… Klick… "July 22,…           51569              0 Major    
+ 3  2024 Black Canyo… Yakima "July 22,…            9211              0 Major    
+ 4  2024 Pioneer Fir… Chelan "June 8, …           36763              0 Major    
+ 5  2024 Retreat Fir… Yakima "July 23,…           44588              5 Major    
+ 6  2023 Gray Fire[1… Spoka… ""                   10085            259 Major    
+ 7  2020 Whitney Fire Linco… "Septembe…          127430             NA Major    
+ 8  2019 243 Command… Grant  "June 3"             20380              0 Major    
+ 9  2019 Cold Creek … Benton ""                   42000             NA Major    
+10  2019 Pipeline Fi… Kitti… ""                    6515             NA Major    
+# ℹ 160 more rows
+# ℹ 2 more variables: forest_coverage_acres &lt;dbl&gt;, county_size_acres &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(final_fires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+   year fire_name     county start_date fire_size_acres structureslost fire_type
+  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
+1  2024 Beam Road Fi… Yakima "June 15"             8542              0 Major    
+2  2024 Big Horn Fir… Klick… "July 22,…           51569              0 Major    
+3  2024 Black Canyon… Yakima "July 22,…            9211              0 Major    
+4  2024 Pioneer Fire… Chelan "June 8, …           36763              0 Major    
+5  2024 Retreat Fire… Yakima "July 23,…           44588              5 Major    
+6  2023 Gray Fire[15] Spoka… ""                   10085            259 Major    
+# ℹ 2 more variables: forest_coverage_acres &lt;dbl&gt;, county_size_acres &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="future-uses-of-this-data" class="level2">
+<h2 class="anchored" data-anchor-id="future-uses-of-this-data">Future Uses of this Data</h2>
+<p>For future uses of this data we have a lot of things that we want to clean with string functions. We were also looking into census data for each county in Washington, which would be interesting to see if there is higher population in a county that has more forest fire activity. It would also be interesting to add spatial data to this to map the percentage of forest area affected by fires or other percentage maps.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

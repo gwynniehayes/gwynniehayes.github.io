@@ -1,0 +1,148 @@
+---
+title: "Mini Project 2"
+author: "Gwynnie and Aria"
+format: html
+---
+
+```{r}
+#| include: FALSE
+
+library(tidyverse)
+library(stringr)
+library(rvest)
+library(polite)
+library(htmltools)
+library(robotstxt)
+```
+
+## Motivations Behind our Data
+
+After doing our amazing research on salmon we wanted to look at more data from Washington, and one thing that is becoming very prevalent is wildfires, both of us have been in very close proximity to wildfires and have seen the aftermath of many of them. We want to look at the amount of forest land that was lost or affected by forest fires. Thinking through this data we quickly found a data set of the land area affected by fires, we then realized that it would be interesting to see the amount of forested area that was affected by the fires and then also the total land area that was affected in the county as a whole.
+
+## Research Questions
+
+We are interested in looking at the total land area that is affected by forest fires in our home state. We wanted to not only look at the forest land that was effected by also the amount of land area that is forested and then also affected by the fire. 
+
+```{r}
+# Our first table came from wikipedia, which is an allowed source
+is_valid_robotstxt("https://en.wikipedia.org/wiki/List_of_Washington_wildfires")
+
+#reading the html of the website
+wildfires <- read_html("https://en.wikipedia.org/wiki/List_of_Washington_wildfires")
+
+#scraping the table
+wildfiretables <- html_nodes(wildfires, css = "table") 
+
+#our first raw set of tables
+html_table(wildfiretables, header = TRUE, fill = TRUE)
+```
+
+```{r}
+#| warning: FALSE
+
+# Since we had so many tables from one scrape to use, we created a small 
+# function to choose the table from the list using its subset number, cleaned 
+# the names, remove unnecessary columns, and rename a common variables. Due to 
+# inconsistency, all variables were set set as character and then parsed for 
+# numbers.
+
+cleaninggg <- function(table, i) {
+  html_table(table, header = TRUE, fill = TRUE)[[i]]|> 
+    janitor::clean_names() |>
+    select(-notes, -image, -injuries, -complex_name) |>
+    mutate(across(c(structureslost, size_acres), as.character),
+           across(c(structureslost, size_acres), parse_number)) |>
+    rename("fire_size_acres" = "size_acres")
+}
+
+# Running the function for each of the times to 
+# pull the data out of the list from wikipedia into 5 (nearly) uniform datasets
+twenty <- cleaninggg(wildfiretables, 2) |> rename("start_date" = "start_date_cause")
+ten <- cleaninggg(wildfiretables, 3) 
+thousand <- cleaninggg(wildfiretables, 4)
+nines <- cleaninggg(wildfiretables, 5) 
+minors <- cleaninggg(wildfiretables, 6) 
+
+# Binds all of the major fires into one dataset and removes deaths for 
+# consistency with the minor fires
+majors <- rbind(twenty, ten, thousand, nines) |> select(-deaths)
+
+# Adds a column that identifies is a fire was major or minor
+minors['fire_type'] = "Minor"
+majors['fire_type'] = "Major"
+
+# Joins all fires together
+fires <- rbind(majors, minors)
+
+head(fires)
+```
+
+```{r}
+# As most major fires burn throughout forests, we wanted to add in a dataset 
+# about forest coverage per county, we were planning to make a for-loop for 
+# this, but all of the websites we tried to scrape weren't reading the actual 
+# number as it was stored as an image? So we found this website that stores it
+# all as a list
+is_valid_robotstxt("https://data.workingforests.org/#")
+session <- bow("https://data.workingforests.org/#")
+
+# Scraped the county names as one list
+county_title <- scrape(session) |>
+  html_nodes(".countyName") |>
+  html_text()
+county_title
+
+# Scraped the forest coverage as another list
+forest_cov <- scrape(session) |>
+  html_nodes(".dataValueEmphasized") |>
+  html_text()
+forest_cov
+
+# Brought the 2 lists together as one tibble with 2 columns, removed " County"
+# from name to synchronize with main table
+forest_cover <- tibble(county = county_title, 
+                    forest_coverage_acres = forest_cov) |>
+  mutate(county = str_remove(county, " County"),
+         forest_coverage_acres = parse_number(forest_coverage_acres))
+
+# Joins this forest coverage with our fire data by county. For ease of analysis
+# at this stage without knowing string analysis in detail (yet!), we removed all
+# rows that contained 2 counties by dropping NA's in forest coverage. This way 
+# all rows should have a complete collection of county name, forest size, and 
+# fire size. 
+fullfires <- fires |> left_join(forest_cover) |>
+  drop_na(forest_coverage_acres) 
+
+head(fullfires)
+```
+
+```{r}
+# Lastly, we also thought it would be good to include the size of the counties 
+# themselves as a comparison to the size of the forest its fires, so we scraped 
+# this table
+counties <- read_html("https://en.wikipedia.org/wiki/List_of_counties_in_Washington")
+countytable <- html_nodes(counties, css = "table") 
+countytable
+
+# This identifies the table we want, cleans the names, removes part of the name
+# ' County' for consistency, parses the sq. mi. and converts it to acres, and
+# selects just county and county size
+
+countysize <- html_table(countytable, header = TRUE, fill = TRUE)[[2]] |> 
+  janitor::clean_names() |>
+  mutate(county = str_remove(county, " County"),
+         county_size_acres = parse_number(land_area_11) * 640) |>
+    select(county, county_size_acres)
+
+# Finally ! We join this last table with the main dataset
+final_fires <- fullfires |> left_join(countysize)
+  
+final_fires
+
+head(final_fires)
+
+```
+
+## Future Uses of this Data
+
+For future uses of this data we have a lot of things that we want to clean with string functions. We were also looking into census data for each county in Washington, which would be interesting to see if there is higher population in a county that has more forest fire activity. It would also be interesting to add spatial data to this to map the percentage of forest area affected by fires or other percentage maps. 
