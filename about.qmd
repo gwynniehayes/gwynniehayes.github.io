@@ -1,9 +1,9 @@
 ---
-title: "About"
+title: "Quarto Website Notes!"
 ---
 
-About this site
+Creating a Function Website that actually makes the URL Work!
 
-```{r}
-1 + 1
-```
+1.  Build
+2.  Commit
+3.  Push
