@@ -39,7 +39,7 @@ For my numerical maps, I looked at the percentage of land covered in forest in t
 
 I wanted to look frogs for my categorical data. I found observations of frogs on the website, inaturalist where you can export observations based on specific criteria. I wanted to look at something more interesting then just the most common frog in each state so i looked at the most commonly observed frog that is deemed threatened.
 
-### Static Maps
+# Static Maps
 
 ## Joining with Polygons
 
@@ -101,7 +101,7 @@ frogs_static |>
   theme_linedraw()
 ```
 
-### Interactive Maps
+# Interactive Maps
 
 ## Joining for Interactive Polygons
 
