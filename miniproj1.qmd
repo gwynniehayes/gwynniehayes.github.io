@@ -205,4 +205,3 @@ leaflet(frog_sf) |>
   addLegend(pal = pal, title = "Frogs Observed", values = ~frog, opacity = 0.7, position = "bottomright") |>
   addScaleBar(position = "bottomleft")
 ```
-
