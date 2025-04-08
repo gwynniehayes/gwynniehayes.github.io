@@ -7,6 +7,41 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "miniproj1.html",
+    "href": "miniproj1.html",
+    "title": "Mini Project #1",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(dplyr)\nlibrary(sf)\nlibrary(tmap)\nlibrary(maps)\nlibrary(viridis)\nlibrary(htmltools)\nlibrary(glue)\nlibrary(leaflet)\n\nus_states &lt;- map_data(\"state\")\n\nfrogs &lt;- read.csv(\"~/Desktop/15/SDS264/data/most_common_frog.csv\") |&gt;\n  na.omit()\n\nforests &lt;- read.csv(\"~/Desktop/15/SDS264/data/forests.csv\") |&gt;\n  mutate('forest_cover' = forest_area/land_area * 100)\n\nstates &lt;- read_sf(\"https://rstudio.github.io/leaflet/json/us-states.geojson\")"
+  },
+  {
+    "objectID": "miniproj1.html#importing-data",
+    "href": "miniproj1.html#importing-data",
+    "title": "Mini Project #1",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(dplyr)\nlibrary(sf)\nlibrary(tmap)\nlibrary(maps)\nlibrary(viridis)\nlibrary(htmltools)\nlibrary(glue)\nlibrary(leaflet)\n\nus_states &lt;- map_data(\"state\")\n\nfrogs &lt;- read.csv(\"~/Desktop/15/SDS264/data/most_common_frog.csv\") |&gt;\n  na.omit()\n\nforests &lt;- read.csv(\"~/Desktop/15/SDS264/data/forests.csv\") |&gt;\n  mutate('forest_cover' = forest_area/land_area * 100)\n\nstates &lt;- read_sf(\"https://rstudio.github.io/leaflet/json/us-states.geojson\")"
+  },
+  {
+    "objectID": "miniproj1.html#data-source",
+    "href": "miniproj1.html#data-source",
+    "title": "Mini Project #1",
+    "section": "Data Source",
+    "text": "Data Source"
+  },
+  {
+    "objectID": "miniproj1.html#joining-for-interactive-polygons",
+    "href": "miniproj1.html#joining-for-interactive-polygons",
+    "title": "Mini Project #1",
+    "section": "Joining for Interactive Polygons",
+    "text": "Joining for Interactive Polygons\n\nstates &lt;- states |&gt;\n  filter(!(name %in% c(\"Alaska\", \"Hawaii\", \"Puerto Rico\"))) |&gt;\n  select(\"name\", \"geometry\")\n\nfrogs_interactive &lt;- frogs |&gt;\n  right_join(states, by = c(\"state\" = \"name\"))\n\n\nforest_interactive &lt;- forests |&gt;\n  right_join(states, by = c(\"state\" = \"name\"))"
+  },
+  {
+    "objectID": "miniproj1.html#interactive-maps",
+    "href": "miniproj1.html#interactive-maps",
+    "title": "Mini Project #1",
+    "section": "Interactive Maps",
+    "text": "Interactive Maps\n\nforest_sf &lt;- st_as_sf(forest_interactive) |&gt;\n  mutate(forest_cover = trunc(forest_cover))\n\npal &lt;- colorNumeric(\"Greens\", domain = forest_sf$forest_cover)\n\nforest_sf &lt;- forest_sf |&gt;\n  mutate(labels = str_c(state, \": \", forest_cover, \"% forest cover\"))\n\nlabels &lt;- lapply(forest_sf$labels, HTML)\nleaflet(forest_sf) |&gt;\n  setView(-96, 37.8, 4) |&gt;\n  addProviderTiles(\"Esri.WorldTopoMap\") |&gt;\n  addPolygons(\n    fillColor = ~pal(forest_cover),\n    weight = 2,\n    opacity = 1,\n    color = \"black\",\n    fillOpacity = 0.6,\n    highlightOptions = highlightOptions(\n      weight = 5,\n      color = \"pink\",\n      fillOpacity = 0.7,\n      bringToFront = TRUE),\n    label = labels,\n    labelOptions = labelOptions(\n      style = list(\"font-weight\" = \"normal\", padding = \"3px 8px\"),\n      textsize = \"12px\",\n      direction = \"auto\")) |&gt;\n  addLegend(pal = pal, title = \"% Forest Coverage\", values = ~forest_cover, opacity = 0.7, position = \"bottomright\") |&gt;\n  addScaleBar(position = \"bottomleft\") |&gt;\n  addPopups(-95, 50, \"Percentage of Forest Cover in Each State\",\n              options = popupOptions(closeOnClick = FALSE))\n\n\n\n\n\n\nfrog_sf &lt;- st_as_sf(frogs_interactive) \npal &lt;- colorFactor(c(\"#800000\", \n                               \"#9A6324\", \n                               \"#808000\", \n                               \"#469990\", \n                               \"#000075\", \n                               \"#000000\", \n                               \"#e6194B\", \n                               \"#f58231\", \n                               \"#ffe119\", \n                               \"#bfef45\", \n                               \"#3cb44b\", \n                               \"#42d4f4\", \n                               \"#4363d8\",\n                               \"#911eb4\", \n                               \"#f032e6\", \n                               \"#fabed4\", \n                               \"#ffd8b1\",\n                               \"#fffac8\",\n                               \"#aaffc3\"), domain = frog_sf$frog)\n\nfrog_sf &lt;- frog_sf |&gt;\n  mutate(labels = str_c(\"The \", frog, \" is the most observed threatened frog in \", state))\n\nlabels &lt;- lapply(frog_sf$labels, HTML)\n\nleaflet(frog_sf) |&gt;\n  setView(-96, 37.8, 4) |&gt;\n  addProviderTiles(\"Esri.WorldTopoMap\") |&gt;\n  addPolygons(\n    fillColor = ~pal(frog),\n    weight = 2,\n    opacity = 1,\n    color = \"black\",\n    fillOpacity = 0.7,\n    highlightOptions = highlightOptions(\n      weight = 5,\n      color = \"pink\",\n      fillOpacity = 0.7,\n      bringToFront = TRUE),\n    label = labels,\n    labelOptions = labelOptions(\n      style = list(\"font-weight\" = \"normal\", padding = \"3px 8px\"),\n      textsize = \"12px\",\n      direction = \"auto\")) |&gt;\n  addLegend(pal = pal, title = \"Frogs Observed\", values = ~frog, opacity = 0.7, position = \"bottomright\") |&gt;\n  addScaleBar(position = \"bottomleft\")"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "gwynniehayes.github.io",

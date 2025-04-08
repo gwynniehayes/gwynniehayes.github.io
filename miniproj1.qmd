@@ -1,5 +1,5 @@
 ---
-title: "miniproj1"
+title: "Mini Project #1"
 format: html
 ---
 
