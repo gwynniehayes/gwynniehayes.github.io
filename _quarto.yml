@@ -3,12 +3,13 @@ project:
   output-dir: docs
 
 website:
-  title: "gwynniehayes.github.io"
+  title: "gwynnie!"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - miniproj1.qmd
 
 format:
   html:

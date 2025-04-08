@@ -1,0 +1,147 @@
+---
+title: "miniproj1"
+format: html
+---
+
+## Importing Data
+
+```{r}
+#| warning: false
+
+library(tidyverse)
+library(dplyr)
+library(sf)
+library(tmap)
+library(maps)
+library(viridis)
+library(htmltools)
+library(glue)
+library(leaflet)
+
+us_states <- map_data("state")
+
+frogs <- read.csv("~/Desktop/15/SDS264/data/most_common_frog.csv") |>
+  na.omit()
+
+forests <- read.csv("~/Desktop/15/SDS264/data/forests.csv") |>
+  mutate('forest_cover' = forest_area/land_area * 100)
+
+states <- read_sf("https://rstudio.github.io/leaflet/json/us-states.geojson")
+```
+
+## Data Source
+
+# Forest
+
+For my numerical maps, I looked at the percentage of land covered in forest in the united states. I found this data in the USDA Forest Service FIA Annual Report, this report is a pdf where I extracted the values that I would need for this data set.
+
+# Frogs
+
+I wanted to look frogs for my categorical data. I found observations of frogs on the website, inaturalist where you can export observations based on specific criteria. I wanted to look at something more interesting then just the most common frog in each state so i looked at the most commonly observed frog that is deemed threatened.
+
+## Joining for Interactive Polygons
+
+```{r}
+#| warning: false
+states <- states |>
+  filter(!(name %in% c("Alaska", "Hawaii", "Puerto Rico"))) |>
+  select("name", "geometry")
+
+frogs_interactive <- frogs |>
+  right_join(states, by = c("state" = "name"))
+```
+
+```{r}
+#| warning: false
+forest_interactive <- forests |>
+  right_join(states, by = c("state" = "name"))
+```
+
+## Interactive Maps
+
+```{r}
+#| warning: false
+forest_sf <- st_as_sf(forest_interactive) |>
+  mutate(forest_cover = trunc(forest_cover))
+
+pal <- colorNumeric("Greens", domain = forest_sf$forest_cover)
+
+forest_sf <- forest_sf |>
+  mutate(labels = str_c(state, ": ", forest_cover, "% forest cover"))
+
+labels <- lapply(forest_sf$labels, HTML)
+leaflet(forest_sf) |>
+  setView(-96, 37.8, 4) |>
+  addProviderTiles("Esri.WorldTopoMap") |>
+  addPolygons(
+    fillColor = ~pal(forest_cover),
+    weight = 2,
+    opacity = 1,
+    color = "black",
+    fillOpacity = 0.6,
+    highlightOptions = highlightOptions(
+      weight = 5,
+      color = "pink",
+      fillOpacity = 0.7,
+      bringToFront = TRUE),
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "12px",
+      direction = "auto")) |>
+  addLegend(pal = pal, title = "% Forest Coverage", values = ~forest_cover, opacity = 0.7, position = "bottomright") |>
+  addScaleBar(position = "bottomleft") |>
+  addPopups(-95, 50, "Percentage of Forest Cover in Each State",
+              options = popupOptions(closeOnClick = FALSE))
+```
+
+```{r}
+#| warning: false
+frog_sf <- st_as_sf(frogs_interactive) 
+pal <- colorFactor(c("#800000", 
+                               "#9A6324", 
+                               "#808000", 
+                               "#469990", 
+                               "#000075", 
+                               "#000000", 
+                               "#e6194B", 
+                               "#f58231", 
+                               "#ffe119", 
+                               "#bfef45", 
+                               "#3cb44b", 
+                               "#42d4f4", 
+                               "#4363d8",
+                               "#911eb4", 
+                               "#f032e6", 
+                               "#fabed4", 
+                               "#ffd8b1",
+                               "#fffac8",
+                               "#aaffc3"), domain = frog_sf$frog)
+
+frog_sf <- frog_sf |>
+  mutate(labels = str_c("The ", frog, " is the most observed threatened frog in ", state))
+
+labels <- lapply(frog_sf$labels, HTML)
+
+leaflet(frog_sf) |>
+  setView(-96, 37.8, 4) |>
+  addProviderTiles("Esri.WorldTopoMap") |>
+  addPolygons(
+    fillColor = ~pal(frog),
+    weight = 2,
+    opacity = 1,
+    color = "black",
+    fillOpacity = 0.7,
+    highlightOptions = highlightOptions(
+      weight = 5,
+      color = "pink",
+      fillOpacity = 0.7,
+      bringToFront = TRUE),
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "12px",
+      direction = "auto")) |>
+  addLegend(pal = pal, title = "Frogs Observed", values = ~frog, opacity = 0.7, position = "bottomright") |>
+  addScaleBar(position = "bottomleft")
+```
