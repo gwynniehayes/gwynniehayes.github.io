@@ -39,6 +39,67 @@ For my numerical maps, I looked at the percentage of land covered in forest in t
 
 I wanted to look frogs for my categorical data. I found observations of frogs on the website, inaturalist where you can export observations based on specific criteria. I wanted to look at something more interesting then just the most common frog in each state so i looked at the most commonly observed frog that is deemed threatened.
 
+## Joining with Polygons
+
+```{r}
+#| warning: false
+forests_static <- forests |>
+  mutate(state = str_to_lower(state)) |>
+  right_join(us_states, by = c("state" = "region")) 
+```
+
+```{r}
+#| warning: false
+frogs_static <- frogs |>
+  mutate(state = str_to_lower(state)) |>
+  right_join(us_states, by = c("state" = "region"))
+```
+
+## Static Maps
+
+```{r}
+#| warning: false
+forests_static |>
+  ggplot(mapping = aes(x = long, y = lat, group = group)) + 
+  geom_polygon(aes(fill = forest_cover), color = "black", linewidth = 0.2) + 
+  labs(fill = "% Forest Coverage", title = "Percent of Forest Coverage in each US State", x = "Longitude", y = "Latitude", caption = "Data Source: USDA Forest Service FIA Annual Report") +
+  coord_map() +
+  scale_fill_viridis(option = "viridis", direction = -1) +
+  theme_linedraw()
+```
+
+alt text: This is a choropleth map of the United States that is looking a the percentage of land area that is covered by forest in each state. The x-axis is the longitude values of the United States which contain values -120 - -80. The y-axis the latitude values of the United States which contain values 25-50. This map is colored by the percentage forest covereage with the most coverage being a dark purple while the least coverage is a bright yellow. From this map we can see that states in the East have a higher percentage of forest coverage while states in the middle have a much lower percent forest coverage, then the west coast has a medium amount of forest coverage.
+
+```{r}
+#| warning: false
+frogs_static |>
+  ggplot(mapping = aes(x = long, y = lat, group = group)) + 
+  geom_polygon(aes(fill = frog), color = "black", linewidth = 0.2) + 
+  labs(fill = "Frog Common Name", title = "Most Observed Threatened Frog in Each State", x = "Longitude", y = "Latitude", caption = "Data Source: https://www.inaturalist.org/observations?place_id=1&subview=map&taxon_id=25473&threatened") +
+  scale_fill_manual(values = c("#800000", 
+                               "#9A6324", 
+                               "#808000", 
+                               "#469990", 
+                               "#000075", 
+                               "#000000", 
+                               "#e6194B", 
+                               "#f58231", 
+                               "#ffe119", 
+                               "#bfef45", 
+                               "#3cb44b", 
+                               "#42d4f4", 
+                               "#4363d8",
+                               "#911eb4", 
+                               "#f032e6", 
+                               "#fabed4", 
+                               "#ffd8b1",
+                               "#fffac8",
+                               "#aaffc3")) +
+  coord_map() +
+  theme_linedraw()
+```
+
+
 ## Joining for Interactive Polygons
 
 ```{r}
@@ -145,3 +206,4 @@ leaflet(frog_sf) |>
   addLegend(pal = pal, title = "Frogs Observed", values = ~frog, opacity = 0.7, position = "bottomright") |>
   addScaleBar(position = "bottomleft")
 ```
+
