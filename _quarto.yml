@@ -11,12 +11,12 @@ website:
       - about.qmd
       - miniproj1.qmd
       - miniproj2.qmd
-
+    
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: styles.scss 
     toc: true
+    page-layout: full
 
 editor: visual
 

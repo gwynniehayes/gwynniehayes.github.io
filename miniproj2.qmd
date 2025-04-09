@@ -1,5 +1,5 @@
 ---
-title: "Mini Project 2"
+title: "Mini Project #2"
 author: "Gwynnie and Aria"
 format: html
 ---

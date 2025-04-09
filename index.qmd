@@ -1,5 +1,13 @@
 ---
-title: "Hellooo"
+title: "This is Benny"
+image: benny.jpeg
+toc: false
+about: 
+  template: jolla
+  image-shape: rounded
+  image-width: 30em
+editor_options: 
+  chunk_output_type: console
 ---
 
-This is my epic and cool website
+Benny is really fuzzy and large!
