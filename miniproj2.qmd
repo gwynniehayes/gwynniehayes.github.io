@@ -21,7 +21,7 @@ After doing our amazing research on salmon we wanted to look at more data from W
 
 ## Research Questions
 
-We are interested in looking at the total land area that is affected by forest fires in our home state. We wanted to not only look at the forest land that was effected by also the amount of land area that is forested and then also affected by the fire. 
+We are interested in looking at the total land area that is affected by forest fires in our home state. We wanted to not only look at the forest land that was effected by also the amount of land area that is forested and then also affected by the fire.
 
 ```{r}
 # Our first table came from wikipedia, which is an allowed source
@@ -145,4 +145,4 @@ head(final_fires)
 
 ## Future Uses of this Data
 
-For future uses of this data we have a lot of things that we want to clean with string functions. We were also looking into census data for each county in Washington, which would be interesting to see if there is higher population in a county that has more forest fire activity. It would also be interesting to add spatial data to this to map the percentage of forest area affected by fires or other percentage maps. 
+For future uses of this data we have a lot of things that we want to clean with string functions. We were also looking into census data for each county in Washington, which would be interesting to see if there is higher population in a county that has more forest fire activity. It would also be interesting to add spatial data to this to map the percentage of forest area affected by fires or other percentage maps.

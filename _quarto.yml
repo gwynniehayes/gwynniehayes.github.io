@@ -10,6 +10,7 @@ website:
         text: Home
       - about.qmd
       - miniproj1.qmd
+      - miniproj2.qmd
 
 format:
   html:
