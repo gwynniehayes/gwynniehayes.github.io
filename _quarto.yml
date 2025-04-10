@@ -9,9 +9,10 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - miniproj1.qmd
-      - miniproj2.qmd
-    
+      - text: Projects
+        menu: 
+          - miniproj1.qmd
+          - miniproj2.qmd
 format:
   html:
     theme: styles.scss 

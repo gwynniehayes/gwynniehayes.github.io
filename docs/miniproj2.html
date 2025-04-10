@@ -130,14 +130,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">Quarto Website Notes!</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./miniproj1.html"> 
-<span class="menu-text">Mini Project #1</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./miniproj1.html">
+ <span class="dropdown-text">Mini Project #1</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./miniproj2.html" aria-current="page"> 
-<span class="menu-text">Mini Project #2</span></a>
+        <li>
+    <a class="dropdown-item" href="./miniproj2.html">
+ <span class="dropdown-text">Mini Project #2</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -205,157 +212,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>wildfires <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_Washington_wildfires"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#scraping the table</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>wildfiretables <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(wildfires, <span class="at">css =</span> <span class="st">"table"</span>) </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#our first raw set of tables</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">html_table</span>(wildfiretables, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-# A tibble: 0 × 2
-# ℹ 2 variables:  &lt;lgl&gt;,
-#   This list is incomplete; you can help by adding missing items.  (August 2015) &lt;lgl&gt;
-
-[[2]]
-# A tibble: 11 × 11
-    Year `Fire name`       `Complex name` County `Start dateCause` `Size(acres)`
-   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt;        
- 1  2024 Beam Road Fire[2] ""             Yakima "June 15"         8,542 acres …
- 2  2024 Big Horn Fire[3]… ""             Klick… "July 22, unknow… 51,569 acres…
- 3  2024 Black Canyon Fir… ""             Yakima "July 22, unknow… 9,211 acres …
- 4  2024 Cougar Creek Fir… ""             Asoti… "July 15, unknow… 20,699 acres…
- 5  2024 Pioneer Fire[8]   ""             Chelan "June 8, human c… 36,763 acres…
- 6  2024 Retreat Fire[9][… ""             Yakima "July 23, cause … 44,588 acres…
- 7  2024 Swawilla Fire[11… ""             Ferry… "July 17, Lightn… 53,462 acres…
- 8  2023 Oregon Fire[13]   ""             Spoka… ""                10,817 acres…
- 9  2023 Gray Fire[15]     ""             Spoka… ""                10,085[15][1…
-10  2020 Cold Springs Can… "Labor Day fi… Okano… ""                Over 410,000…
-11  2020 Whitney Fire      ""             Linco… "September 7"     127,430      
-# ℹ 5 more variables: Structureslost &lt;chr&gt;, Deaths &lt;chr&gt;, Injuries &lt;int&gt;,
-#   Notes &lt;chr&gt;, Image &lt;chr&gt;
-
-[[3]]
-# A tibble: 66 × 11
-    Year `Fire name`           `Complex name`  County `Start date` `Size(acres)`
-   &lt;int&gt; &lt;chr&gt;                 &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
- 1  2019 243 Command Fire[18]  ""              Grant  "June 3"     20,380 acres…
- 2  2019 Cold Creek Fire[19]   ""              Benton ""           42,000 acres…
- 3  2019 Pipeline Fire         ""              Kitti… ""           6,515 acres …
- 4  2019 Powerline Fire[20]    ""              Grant  ""           7,800 acres …
- 5  2019 Williams Flats Fire   ""              Okano… ""           44,446 acres…
- 6  2016 Hart Fire             ""              Linco… ""           18,220       
- 7  2016 Range 12 Fire[21]     ""              Yakima ""           177,210      
- 8  2016 2016 Snake River Fire ""              Garfi… ""           11,452 acres…
- 9  2016 Spokane Complex Fire  "Spokane Compl… Spoka… ""           7,251 acres …
-10  2015 Black Canyon Fire[22] "Chelan Comple… Chelan "August 14"  6,761        
-# ℹ 56 more rows
-# ℹ 5 more variables: Structureslost &lt;chr&gt;, Deaths &lt;int&gt;, Injuries &lt;int&gt;,
-#   Notes &lt;chr&gt;, Image &lt;chr&gt;
-
-[[4]]
-# A tibble: 55 × 11
-    Year `Fire name`            `Complex name` County `Start date` `Size(acres)`
-   &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
- 1  2009 Dry Creek Complex[50]  "Dry Creek Co… Bento… ""           48,902       
- 2  2009 Oden Road Fire[50]     ""             Okano… ""           9,607        
- 3  2008 Badger Mountain Fire[… ""             Chela… ""           15,023       
- 4  2008 Cold Springs Fire      ""             Klick… ""           7,729        
- 5  2008 Columbia River Road F… ""             Okano… ""           22,115       
- 6  2008 Smith Lake Fire[64]    ""             Dougl… ""           12,513       
- 7  2008 Spokane Valley Fire[6… ""             Spoka… ""           1,008        
- 8  2008 Swanson Lake Fire[50]  ""             Linco… ""           19,090       
- 9  2007 Domke Lake Fire[50]    ""             Okano… ""           11,900       
-10  2007 Easy Street Fire[50]   ""             Chelan ""           5,209        
-# ℹ 45 more rows
-# ℹ 5 more variables: Structureslost &lt;int&gt;, Deaths &lt;int&gt;, Injuries &lt;chr&gt;,
-#   Notes &lt;chr&gt;, Image &lt;chr&gt;
-
-[[5]]
-# A tibble: 28 × 11
-    Year `Fire name`            `Complex name` County `Start date` `Size(acres)`
-   &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
- 1  1998 Cleveland Fire[84]     ""             Klick… ""           18,500       
- 2  1998 Rattle Snake Ridge Fi… ""             Yakima ""           18,000       
- 3  1997 Olympia Command Fire[… ""             Benton ""           5,500        
- 4  1997 Pow Wah Kee Fire[1]    "August 3"     Asotin ""           8,000        
- 5  1996 Baird Springs Fire[1]  ""             Grant  "August 2"   14,000       
- 6  1996 Cold Creek Fire[50]    ""             Bento… ""           57,000       
- 7  1994 Copper Butte Fire[96]  ""             Ferry  ""           10,473       
- 8  1994 Rat Creek / Hatchery … ""             Chelan ""           43,000       
- 9  1994 Tyee Creek Fire[98][9… ""             Chelan ""           135,000      
-10  1992 Castlerock Fire[1]     ""             Wenat… ""           3,500[100]   
-# ℹ 18 more rows
-# ℹ 5 more variables: Structureslost &lt;chr&gt;, Deaths &lt;chr&gt;, Injuries &lt;chr&gt;,
-#   Notes &lt;chr&gt;, Image &lt;chr&gt;
-
-[[6]]
-# A tibble: 39 × 10
-    Year `Fire name`            `Complex name` County `Start date` `Size(acres)`
-   &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;        
- 1  2024 Bridge Creek Fire      ""             Ferry  "July 19"    3,998 acres …
- 2  2016 Buck Creek             ""             Chelan "July 22"    1,987 acres …
- 3  2015 231 Fire               ""             Steve… ""           1,138        
- 4  2015 Twenty-One Mile Grade… ""             Ferry  ""           2,250        
- 5  2014 Hansel Fire            ""             Chelan ""           1,016        
- 6  2014 Little Bridge Fire     ""             Okano… "August 2"   4,896        
- 7  2014 Lone Mountain Fire     ""             Chelan "July 14"    2,770        
- 8  2012 Cashmere Fire          "Wenatchee Co… Chelan ""           2,651        
- 9  2012 Highway 141 Fire[84]   ""             Klick… ""           1,644        
-10  2011 Salmon Fire[50]        ""             Okano… ""           1,631        
-# ℹ 29 more rows
-# ℹ 4 more variables: Structureslost &lt;int&gt;, Injuries &lt;int&gt;, Notes &lt;chr&gt;,
-#   Image &lt;chr&gt;
-
-[[7]]
-# A tibble: 0 × 2
-# ℹ 2 variables:  &lt;lgl&gt;,
-#   This list is incomplete; you can help by adding missing items.  (September 2015) &lt;lgl&gt;
-
-[[8]]
-# A tibble: 24 × 10
-   ``     Totalfires `Total area burned` `Total area burned` Structureslost  
-   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;               &lt;chr&gt;           
- 1 ""     Totalfires Acres               Hectares            "Structureslost"
- 2 "2002" 1,285      92,742              37,531              ""              
- 3 "2003" 1,373      200,517             81,146              ""              
- 4 "2004" 1,674      92,617              37,481              ""              
- 5 "2005" 998        185,748             75,170              ""              
- 6 "2006" 1,579      410,060             165,950             ""              
- 7 "2007" 1,268      214,925             86,977              ""              
- 8 "2008" 1,303      147,264             59,596              ""              
- 9 "2009" 1,976      77,250              31,260              ""              
-10 "2010" 870        56,820              22,990              ""              
-# ℹ 14 more rows
-# ℹ 5 more variables: Fatalities &lt;chr&gt;, Injuries &lt;chr&gt;, Totalcost &lt;chr&gt;,
-#   Notes &lt;chr&gt;, Source &lt;chr&gt;
-
-[[9]]
-# A tibble: 12 × 2
-   .mw-parser-output .navbar{display:inline;font-size:8…¹ .mw-parser-output .n…²
-   &lt;chr&gt;                                                  &lt;chr&gt;                 
- 1 "Pre-2014"                                             "Yacolt Burn (1902)\n…
- 2 "2014"                                                 "Carlton Complex"     
- 3 "2015"                                                 "Okanogan Complex"    
- 4 "2016"                                                 "Range 12"            
- 5 "2017"                                                 "Diamond Creek\nJack …
- 6 "2018"                                                 "Soap Lake\nMaple Fir…
- 7 "2019"                                                 "243 Command Fire\nLe…
- 8 "2020"                                                 "Evans Canyon\nLabor …
- 9 "2021"                                                 "Schneider Springs Fi…
-10 "2023"                                                 "Eagle Bluff Fire\nGr…
-11 "2024"                                                 "Pioneer Fire\nRetrea…
-12 "Category\n Commons"                                   "Category\n Commons"  
-# ℹ abbreviated names:
-#   ¹​`.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a&gt;span,.mw-parser-output .navbar a&gt;abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}html.skin-theme-clientpref-night .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}}@media print{.mw-parser-output .navbar{display:none!important}}vteWashington wildfires`,
-#   ²​`.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a&gt;span,.mw-parser-output .navbar a&gt;abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}html.skin-theme-clientpref-night .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}}@media print{.mw-parser-output .navbar{display:none!important}}vteWashington wildfires`
-
-[[10]]
-# A tibble: 3 × 2
-  `vteWildfires in the United States` `vteWildfires in the United States`       
-  &lt;chr&gt;                               &lt;chr&gt;                                     
-1 "States"                            "Alabama\nAlaska\nArizona\nArkansas\nCali…
-2 "Territories"                       "American Samoa\nGuam\nNorthern Mariana I…
-3 "Category\n Commons"                "Category\n Commons"                      </code></pre>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>wildfiretables <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(wildfires, <span class="at">css =</span> <span class="st">"table"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#our first raw set of tables</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> (<span class="fu">html_table</span>(wildfiretables, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(tables))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we had so many tables from one scrape to use, we created a small </span></span>
@@ -392,165 +255,499 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Joins all fires together</span></span>
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>fires <span class="ot">&lt;-</span> <span class="fu">rbind</span>(majors, minors)</span>
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 7
-   year fire_name     county start_date fire_size_acres structureslost fire_type
-  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
-1  2024 Beam Road Fi… Yakima June 15               8542              0 Major    
-2  2024 Big Horn Fir… Klick… July 22, …           51569              0 Major    
-3  2024 Black Canyon… Yakima July 22, …            9211              0 Major    
-4  2024 Cougar Creek… Asoti… July 15, …           20699              4 Major    
-5  2024 Pioneer Fire… Chelan June 8, h…           36763              0 Major    
-6  2024 Retreat Fire… Yakima July 23, …           44588              5 Major    </code></pre>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(fires))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 21%">
+<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">fire_name</th>
+<th style="text-align: left;">county</th>
+<th style="text-align: left;">start_date</th>
+<th style="text-align: right;">fire_size_acres</th>
+<th style="text-align: right;">structureslost</th>
+<th style="text-align: left;">fire_type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Beam Road Fire[2]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">June 15</td>
+<td style="text-align: right;">8542</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Big Horn Fire[3][4]</td>
+<td style="text-align: left;">Klickitat</td>
+<td style="text-align: left;">July 22, unknown</td>
+<td style="text-align: right;">51569</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Black Canyon Fire[5]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">July 22, unknown</td>
+<td style="text-align: right;">9211</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Cougar Creek Fire[6][7]</td>
+<td style="text-align: left;">Asotin &amp; Garfield</td>
+<td style="text-align: left;">July 15, unknown</td>
+<td style="text-align: right;">20699</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Major</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Pioneer Fire[8]</td>
+<td style="text-align: left;">Chelan</td>
+<td style="text-align: left;">June 8, human caused</td>
+<td style="text-align: right;">36763</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Retreat Fire[9][10]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">July 23, cause unknown</td>
+<td style="text-align: right;">44588</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Major</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As most major fires burn throughout forests, we wanted to add in a dataset </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># about forest coverage per county, we were planning to make a for-loop for </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this, but all of the websites we tried to scrape weren't reading the actual </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number as it was stored as an image? So we found this website that stores it</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># all as a list</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">is_valid_robotstxt</span>(<span class="st">"https://data.workingforests.org/#"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As most major fires burn throughout forests, we wanted to add in a dataset </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># about forest coverage per county, we were planning to make a for-loop for </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this, but all of the websites we tried to scrape weren't reading the actual </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number as it was stored as an image? So we found this website that stores it</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># all as a list</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">is_valid_robotstxt</span>(<span class="st">"https://data.workingforests.org/#"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>session <span class="ot">&lt;-</span> <span class="fu">bow</span>(<span class="st">"https://data.workingforests.org/#"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Scraped the county names as one list</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>county_title <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".countyName"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>session <span class="ot">&lt;-</span> <span class="fu">bow</span>(<span class="st">"https://data.workingforests.org/#"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Scraped the county names as one list</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>county_title <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".countyName"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(county_title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Statewide</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adams County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asotin County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Benton County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chelan County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clallam County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clark County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Columbia County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cowlitz County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Douglas County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ferry County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Franklin County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Garfield County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grant County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grays Harbor County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Island County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jefferson County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">King County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kitsap County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kittitas County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Klickitat County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lewis County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lincoln County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mason County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Okanogan County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pacific County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pend Oreille County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pierce County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">San Juan County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Skagit County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Skamania County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Snohomish County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spokane County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stevens County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thurston County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wahkiakum County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Walla Walla County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Whatcom County</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Whitman County</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yakima County</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>county_title</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "Statewide"           "Adams County"        "Asotin County"      
- [4] "Benton County"       "Chelan County"       "Clallam County"     
- [7] "Clark County"        "Columbia County"     "Cowlitz County"     
-[10] "Douglas County"      "Ferry County"        "Franklin County"    
-[13] "Garfield County"     "Grant County"        "Grays Harbor County"
-[16] "Island County"       "Jefferson County"    "King County"        
-[19] "Kitsap County"       "Kittitas County"     "Klickitat County"   
-[22] "Lewis County"        "Lincoln County"      "Mason County"       
-[25] "Okanogan County"     "Pacific County"      "Pend Oreille County"
-[28] "Pierce County"       "San Juan County"     "Skagit County"      
-[31] "Skamania County"     "Snohomish County"    "Spokane County"     
-[34] "Stevens County"      "Thurston County"     "Wahkiakum County"   
-[37] "Walla Walla County"  "Whatcom County"      "Whitman County"     
-[40] "Yakima County"      </code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scraped the forest coverage as another list</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>forest_cov <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".dataValueEmphasized"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>() </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(forest_cov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">22,983,438</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,452</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">103,022</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">351</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1,392,891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,034,606</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">251,273</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">203,917</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">657,909</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16,983</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1,072,722</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,733</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100,933</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6,706</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1,120,182</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">86,883</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1,064,350</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,003,402</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">187,620</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">783,309</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">516,397</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,374,647</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">69,114</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">552,926</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1,982,401</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">534,690</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">787,506</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">800,881</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">85,258</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">890,416</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">996,021</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,065,150</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">318,506</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,149,289</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">329,638</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">147,694</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">30,934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,033,817</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">26,889</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1,201,021</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scraped the forest coverage as another list</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>forest_cov <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".dataValueEmphasized"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>forest_cov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "22,983,438" "1,452"      "103,022"    "351"        "1,392,891" 
- [6] "1,034,606"  "251,273"    "203,917"    "657,909"    "16,983"    
-[11] "1,072,722"  "1,733"      "100,933"    "6,706"      "1,120,182" 
-[16] "86,883"     "1,064,350"  "1,003,402"  "187,620"    "783,309"   
-[21] "516,397"    "1,374,647"  "69,114"     "552,926"    "1,982,401" 
-[26] "534,690"    "787,506"    "800,881"    "85,258"     "890,416"   
-[31] "996,021"    "1,065,150"  "318,506"    "1,149,289"  "329,638"   
-[36] "147,694"    "30,934"     "1,033,817"  "26,889"     "1,201,021" </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Brought the 2 lists together as one tibble with 2 columns, removed " County"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from name to synchronize with main table</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>forest_cover <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">county =</span> county_title, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">forest_coverage_acres =</span> forest_cov) <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">forest_coverage_acres =</span> <span class="fu">parse_number</span>(forest_coverage_acres))</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Joins this forest coverage with our fire data by county. For ease of analysis</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># at this stage without knowing string analysis in detail (yet!), we removed all</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># rows that contained 2 counties by dropping NA's in forest coverage. This way </span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows should have a complete collection of county name, forest size, and </span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fire size. </span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>fullfires <span class="ot">&lt;-</span> fires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(forest_cover) <span class="sc">|&gt;</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(forest_coverage_acres) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(county)`</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fullfires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 8
-   year fire_name     county start_date fire_size_acres structureslost fire_type
-  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
-1  2024 Beam Road Fi… Yakima "June 15"             8542              0 Major    
-2  2024 Big Horn Fir… Klick… "July 22,…           51569              0 Major    
-3  2024 Black Canyon… Yakima "July 22,…            9211              0 Major    
-4  2024 Pioneer Fire… Chelan "June 8, …           36763              0 Major    
-5  2024 Retreat Fire… Yakima "July 23,…           44588              5 Major    
-6  2023 Gray Fire[15] Spoka… ""                   10085            259 Major    
-# ℹ 1 more variable: forest_coverage_acres &lt;dbl&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Brought the 2 lists together as one tibble with 2 columns, removed " County"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from name to synchronize with main table</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>forest_cover <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">county =</span> county_title, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">forest_coverage_acres =</span> forest_cov) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">forest_coverage_acres =</span> <span class="fu">parse_number</span>(forest_coverage_acres))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Joins this forest coverage with our fire data by county. For ease of analysis</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># at this stage without knowing string analysis in detail (yet!), we removed all</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># rows that contained 2 counties by dropping NA's in forest coverage. This way </span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows should have a complete collection of county name, forest size, and </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fire size. </span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>fullfires <span class="ot">&lt;-</span> fires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(forest_cover) <span class="sc">|&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(forest_coverage_acres) </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(fullfires))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">fire_name</th>
+<th style="text-align: left;">county</th>
+<th style="text-align: left;">start_date</th>
+<th style="text-align: right;">fire_size_acres</th>
+<th style="text-align: right;">structureslost</th>
+<th style="text-align: left;">fire_type</th>
+<th style="text-align: right;">forest_coverage_acres</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Beam Road Fire[2]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">June 15</td>
+<td style="text-align: right;">8542</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1201021</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Big Horn Fire[3][4]</td>
+<td style="text-align: left;">Klickitat</td>
+<td style="text-align: left;">July 22, unknown</td>
+<td style="text-align: right;">51569</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">516397</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Black Canyon Fire[5]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">July 22, unknown</td>
+<td style="text-align: right;">9211</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1201021</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Pioneer Fire[8]</td>
+<td style="text-align: left;">Chelan</td>
+<td style="text-align: left;">June 8, human caused</td>
+<td style="text-align: right;">36763</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1392891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Retreat Fire[9][10]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">July 23, cause unknown</td>
+<td style="text-align: right;">44588</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1201021</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Gray Fire[15]</td>
+<td style="text-align: left;">Spokane</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">10085</td>
+<td style="text-align: right;">259</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">318506</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lastly, we also thought it would be good to include the size of the counties </span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># themselves as a comparison to the size of the forest its fires, so we scraped </span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this table</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>counties <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Washington"</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>countytable <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(counties, <span class="at">css =</span> <span class="st">"table"</span>) </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>countytable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>{xml_nodeset (8)}
-[1] &lt;table class="infobox vevent" style="float: right; width: ;"&gt;&lt;tbody&gt;\n&lt;tr ...
-[2] &lt;table class="wikitable sortable sticky-header" style="text-align: center ...
-[3] &lt;table class="nowraplinks mw-collapsible mw-collapsed navbox-inner" style ...
-[4] &lt;table class="nowraplinks mw-collapsible autocollapse navbox-inner" style ...
-[5] &lt;table class="nowraplinks hlist mw-collapsible autocollapse navbox-inner" ...
-[6] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...
-[7] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...
-[8] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This identifies the table we want, cleans the names, removes part of the name</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ' County' for consistency, parses the sq. mi. and converts it to acres, and</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># selects just county and county size</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>countysize <span class="ot">&lt;-</span> <span class="fu">html_table</span>(countytable, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_size_acres =</span> <span class="fu">parse_number</span>(land_area_11) <span class="sc">*</span> <span class="dv">640</span>) <span class="sc">|&gt;</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(county, county_size_acres)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally ! We join this last table with the main dataset</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>final_fires <span class="ot">&lt;-</span> fullfires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(countysize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(county)`</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>final_fires</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 170 × 9
-    year fire_name    county start_date fire_size_acres structureslost fire_type
-   &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
- 1  2024 Beam Road F… Yakima "June 15"             8542              0 Major    
- 2  2024 Big Horn Fi… Klick… "July 22,…           51569              0 Major    
- 3  2024 Black Canyo… Yakima "July 22,…            9211              0 Major    
- 4  2024 Pioneer Fir… Chelan "June 8, …           36763              0 Major    
- 5  2024 Retreat Fir… Yakima "July 23,…           44588              5 Major    
- 6  2023 Gray Fire[1… Spoka… ""                   10085            259 Major    
- 7  2020 Whitney Fire Linco… "Septembe…          127430             NA Major    
- 8  2019 243 Command… Grant  "June 3"             20380              0 Major    
- 9  2019 Cold Creek … Benton ""                   42000             NA Major    
-10  2019 Pipeline Fi… Kitti… ""                    6515             NA Major    
-# ℹ 160 more rows
-# ℹ 2 more variables: forest_coverage_acres &lt;dbl&gt;, county_size_acres &lt;dbl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(final_fires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 9
-   year fire_name     county start_date fire_size_acres structureslost fire_type
-  &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;    
-1  2024 Beam Road Fi… Yakima "June 15"             8542              0 Major    
-2  2024 Big Horn Fir… Klick… "July 22,…           51569              0 Major    
-3  2024 Black Canyon… Yakima "July 22,…            9211              0 Major    
-4  2024 Pioneer Fire… Chelan "June 8, …           36763              0 Major    
-5  2024 Retreat Fire… Yakima "July 23,…           44588              5 Major    
-6  2023 Gray Fire[15] Spoka… ""                   10085            259 Major    
-# ℹ 2 more variables: forest_coverage_acres &lt;dbl&gt;, county_size_acres &lt;dbl&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lastly, we also thought it would be good to include the size of the counties </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># themselves as a comparison to the size of the forest its fires, so we scraped </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this table</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>counties <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Washington"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>countytable <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(counties, <span class="at">css =</span> <span class="st">"table"</span>) </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>countytable</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This identifies the table we want, cleans the names, removes part of the name</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ' County' for consistency, parses the sq. mi. and converts it to acres, and</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># selects just county and county size</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>countysize <span class="ot">&lt;-</span> <span class="fu">html_table</span>(countytable, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_size_acres =</span> <span class="fu">parse_number</span>(land_area_11) <span class="sc">*</span> <span class="dv">640</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(county, county_size_acres)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally ! We join this last table with the main dataset</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>final_fires <span class="ot">&lt;-</span> fullfires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(countysize)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(final_fires))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="future-uses-of-this-data" class="level2">

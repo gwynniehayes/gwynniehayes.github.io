@@ -2,10 +2,13 @@
 title: "Mini Project #2"
 author: "Gwynnie and Aria"
 format: html
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
 #| include: FALSE
+#| warning: false
 
 library(tidyverse)
 library(stringr)
@@ -13,6 +16,7 @@ library(rvest)
 library(polite)
 library(htmltools)
 library(robotstxt)
+library(knitr)
 ```
 
 ## Motivations Behind our Data
@@ -24,6 +28,8 @@ After doing our amazing research on salmon we wanted to look at more data from W
 We are interested in looking at the total land area that is affected by forest fires in our home state. We wanted to not only look at the forest land that was effected by also the amount of land area that is forested and then also affected by the fire.
 
 ```{r}
+#| warning: false
+
 # Our first table came from wikipedia, which is an allowed source
 is_valid_robotstxt("https://en.wikipedia.org/wiki/List_of_Washington_wildfires")
 
@@ -32,9 +38,15 @@ wildfires <- read_html("https://en.wikipedia.org/wiki/List_of_Washington_wildfir
 
 #scraping the table
 wildfiretables <- html_nodes(wildfires, css = "table") 
+```
 
+```{r}
+#| output: false
+#| 
 #our first raw set of tables
-html_table(wildfiretables, header = TRUE, fill = TRUE)
+tables <- (html_table(wildfiretables, header = TRUE, fill = TRUE))
+
+knitr::kable(head(tables))
 ```
 
 ```{r}
@@ -74,10 +86,12 @@ majors['fire_type'] = "Major"
 # Joins all fires together
 fires <- rbind(majors, minors)
 
-head(fires)
+knitr::kable(head(fires))
 ```
 
 ```{r}
+#| warning: false
+
 # As most major fires burn throughout forests, we wanted to add in a dataset 
 # about forest coverage per county, we were planning to make a for-loop for 
 # this, but all of the websites we tried to scrape weren't reading the actual 
@@ -90,13 +104,13 @@ session <- bow("https://data.workingforests.org/#")
 county_title <- scrape(session) |>
   html_nodes(".countyName") |>
   html_text()
-county_title
+knitr::kable(county_title)
 
 # Scraped the forest coverage as another list
 forest_cov <- scrape(session) |>
   html_nodes(".dataValueEmphasized") |>
-  html_text()
-forest_cov
+  html_text() 
+knitr::kable(forest_cov)
 
 # Brought the 2 lists together as one tibble with 2 columns, removed " County"
 # from name to synchronize with main table
@@ -113,10 +127,12 @@ forest_cover <- tibble(county = county_title,
 fullfires <- fires |> left_join(forest_cover) |>
   drop_na(forest_coverage_acres) 
 
-head(fullfires)
+knitr::kable(head(fullfires))
 ```
 
 ```{r}
+#| warning: false
+#| output: false
 # Lastly, we also thought it would be good to include the size of the counties 
 # themselves as a comparison to the size of the forest its fires, so we scraped 
 # this table
@@ -136,11 +152,8 @@ countysize <- html_table(countytable, header = TRUE, fill = TRUE)[[2]] |>
 
 # Finally ! We join this last table with the main dataset
 final_fires <- fullfires |> left_join(countysize)
-  
-final_fires
 
-head(final_fires)
-
+knitr::kable(head(final_fires))
 ```
 
 ## Future Uses of this Data
