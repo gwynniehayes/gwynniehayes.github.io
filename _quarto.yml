@@ -5,10 +5,9 @@ project:
 website:
   title: "Gwynnie's Epic Website!"
   navbar:
-    left:
-      - href: tabs/index.qmd
-        text: Home
-      - tabs/about.qmd
+    right:
+      - href: index.qmd
+      - href: about.qmd
       - text: Projects
         menu: 
           - tabs/miniproj1.qmd

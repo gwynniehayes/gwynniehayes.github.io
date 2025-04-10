@@ -1,7 +1,7 @@
 [
   {
-    "objectID": "tabs/about.html",
-    "href": "tabs/about.html",
+    "objectID": "about.html",
+    "href": "about.html",
     "title": "Quarto Website Notes!",
     "section": "",
     "text": "Creating a Function Website that actually makes the URL Work!\n\nBuild\nCommit\nPush"
@@ -84,9 +84,9 @@
     "text": "Future Uses of this Data\nFor future uses of this data we have a lot of things that we want to clean with string functions. We were also looking into census data for each county in Washington, which would be interesting to see if there is higher population in a county that has more forest fire activity. It would also be interesting to add spatial data to this to map the percentage of forest area affected by fires or other percentage maps."
   },
   {
-    "objectID": "tabs/index.html",
-    "href": "tabs/index.html",
-    "title": "This is Benny",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
     "section": "",
     "text": "Benny is really fuzzy and large!"
   }

@@ -1,5 +1,5 @@
 ---
-title: "This is Benny"
+title: "Home"
 image: media/benny.jpeg
 toc: false
 about: 
