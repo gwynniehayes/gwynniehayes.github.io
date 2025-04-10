@@ -12,6 +12,7 @@ about:
   
 editor_options: 
   chunk_output_type: console
+  viewer: source
 ---
 
 Benny is really fuzzy and large!
