@@ -6,13 +6,13 @@ website:
   title: "Gwynnie's Epic Website!"
   navbar:
     left:
-      - href: index.qmd
+      - href: tabs/index.qmd
         text: Home
-      - about.qmd
+      - tabs/about.qmd
       - text: Projects
         menu: 
-          - miniproj1.qmd
-          - miniproj2.qmd
+          - tabs/miniproj1.qmd
+          - tabs/miniproj2.qmd
 format:
   html:
     theme: styles.scss 

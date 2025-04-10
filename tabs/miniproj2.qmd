@@ -138,7 +138,6 @@ knitr::kable(head(fullfires))
 # this table
 counties <- read_html("https://en.wikipedia.org/wiki/List_of_counties_in_Washington")
 countytable <- html_nodes(counties, css = "table") 
-countytable
 
 # This identifies the table we want, cleans the names, removes part of the name
 # ' County' for consistency, parses the sq. mi. and converts it to acres, and

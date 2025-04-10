@@ -1,11 +1,15 @@
 ---
 title: "This is Benny"
-image: benny.jpeg
+image: media/benny.jpeg
 toc: false
 about: 
   template: jolla
   image-shape: rounded
   image-width: 30em
+  links:
+    - text: Github
+      href: https://github.com/gwynniehayes/gwynniehayes.github.io
+  
 editor_options: 
   chunk_output_type: console
 ---
