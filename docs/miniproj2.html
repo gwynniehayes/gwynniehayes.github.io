@@ -353,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>county_title <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".countyName"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(county_title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(county_title))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -380,108 +380,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: left;">Clallam County</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Clark County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Columbia County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Cowlitz County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Douglas County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Ferry County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Franklin County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Garfield County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Grant County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Grays Harbor County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Island County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Jefferson County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">King County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Kitsap County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kittitas County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Klickitat County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Lewis County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Lincoln County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Mason County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Okanogan County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pacific County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Pend Oreille County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pierce County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">San Juan County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Skagit County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Skamania County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Snohomish County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Spokane County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Stevens County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Thurston County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Wahkiakum County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Walla Walla County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Whatcom County</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Whitman County</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Yakima County</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -489,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>forest_cov <span class="ot">&lt;-</span> <span class="fu">scrape</span>(session) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".dataValueEmphasized"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>() </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(forest_cov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(forest_cov))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -515,108 +413,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td style="text-align: left;">1,034,606</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">251,273</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">203,917</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">657,909</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">16,983</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1,072,722</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,733</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">100,933</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6,706</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1,120,182</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">86,883</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1,064,350</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,003,402</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">187,620</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">783,309</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">516,397</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,374,647</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">69,114</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">552,926</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1,982,401</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">534,690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">787,506</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">800,881</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">85,258</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">890,416</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">996,021</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,065,150</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">318,506</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,149,289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">329,638</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">147,694</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">30,934</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,033,817</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">26,889</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1,201,021</td>
 </tr>
 </tbody>
 </table>
@@ -732,22 +528,128 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this table</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>counties <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Washington"</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>countytable <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(counties, <span class="at">css =</span> <span class="st">"table"</span>) </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>countytable</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This identifies the table we want, cleans the names, removes part of the name</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ' County' for consistency, parses the sq. mi. and converts it to acres, and</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># selects just county and county size</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>countysize <span class="ot">&lt;-</span> <span class="fu">html_table</span>(countytable, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_size_acres =</span> <span class="fu">parse_number</span>(land_area_11) <span class="sc">*</span> <span class="dv">640</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(county, county_size_acres)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally ! We join this last table with the main dataset</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>final_fires <span class="ot">&lt;-</span> fullfires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(countysize)</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(final_fires))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>countytable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (8)}
+[1] &lt;table class="infobox vevent" style="float: right; width: ;"&gt;&lt;tbody&gt;\n&lt;tr ...
+[2] &lt;table class="wikitable sortable sticky-header" style="text-align: center ...
+[3] &lt;table class="nowraplinks mw-collapsible mw-collapsed navbox-inner" style ...
+[4] &lt;table class="nowraplinks mw-collapsible autocollapse navbox-inner" style ...
+[5] &lt;table class="nowraplinks hlist mw-collapsible autocollapse navbox-inner" ...
+[6] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...
+[7] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...
+[8] &lt;table class="nowraplinks navbox-subgroup" style="border-spacing:0"&gt;&lt;tbod ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This identifies the table we want, cleans the names, removes part of the name</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ' County' for consistency, parses the sq. mi. and converts it to acres, and</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># selects just county and county size</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>countysize <span class="ot">&lt;-</span> <span class="fu">html_table</span>(countytable, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>)[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county =</span> <span class="fu">str_remove</span>(county, <span class="st">" County"</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">county_size_acres =</span> <span class="fu">parse_number</span>(land_area_11) <span class="sc">*</span> <span class="dv">640</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(county, county_size_acres)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally ! We join this last table with the main dataset</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>final_fires <span class="ot">&lt;-</span> fullfires <span class="sc">|&gt;</span> <span class="fu">left_join</span>(countysize)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(final_fires))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 15%">
+<col style="width: 7%">
+<col style="width: 16%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 15%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">fire_name</th>
+<th style="text-align: left;">county</th>
+<th style="text-align: left;">start_date</th>
+<th style="text-align: right;">fire_size_acres</th>
+<th style="text-align: right;">structureslost</th>
+<th style="text-align: left;">fire_type</th>
+<th style="text-align: right;">forest_coverage_acres</th>
+<th style="text-align: right;">county_size_acres</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Beam Road Fire[2]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">June 15</td>
+<td style="text-align: right;">8542</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1201021</td>
+<td style="text-align: right;">2749440</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Big Horn Fire[3][4]</td>
+<td style="text-align: left;">Klickitat</td>
+<td style="text-align: left;">July 22, unknown</td>
+<td style="text-align: right;">51569</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">516397</td>
+<td style="text-align: right;">1198080</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Black Canyon Fire[5]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">July 22, unknown</td>
+<td style="text-align: right;">9211</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1201021</td>
+<td style="text-align: right;">2749440</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Pioneer Fire[8]</td>
+<td style="text-align: left;">Chelan</td>
+<td style="text-align: left;">June 8, human caused</td>
+<td style="text-align: right;">36763</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1392891</td>
+<td style="text-align: right;">1868800</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Retreat Fire[9][10]</td>
+<td style="text-align: left;">Yakima</td>
+<td style="text-align: left;">July 23, cause unknown</td>
+<td style="text-align: right;">44588</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">1201021</td>
+<td style="text-align: right;">2749440</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Gray Fire[15]</td>
+<td style="text-align: left;">Spokane</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">10085</td>
+<td style="text-align: right;">259</td>
+<td style="text-align: left;">Major</td>
+<td style="text-align: right;">318506</td>
+<td style="text-align: right;">1128960</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
 <section id="future-uses-of-this-data" class="level2">

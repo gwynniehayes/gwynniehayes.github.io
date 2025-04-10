@@ -104,13 +104,13 @@ session <- bow("https://data.workingforests.org/#")
 county_title <- scrape(session) |>
   html_nodes(".countyName") |>
   html_text()
-knitr::kable(county_title)
+knitr::kable(head(county_title))
 
 # Scraped the forest coverage as another list
 forest_cov <- scrape(session) |>
   html_nodes(".dataValueEmphasized") |>
   html_text() 
-knitr::kable(forest_cov)
+knitr::kable(head(forest_cov))
 
 # Brought the 2 lists together as one tibble with 2 columns, removed " County"
 # from name to synchronize with main table
@@ -132,7 +132,7 @@ knitr::kable(head(fullfires))
 
 ```{r}
 #| warning: false
-#| output: false
+
 # Lastly, we also thought it would be good to include the size of the counties 
 # themselves as a comparison to the size of the forest its fires, so we scraped 
 # this table
