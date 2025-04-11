@@ -67,7 +67,7 @@ forests_static |>
   labs(fill = "% Forest Coverage", title = "Percent of Forest Coverage in each US State", x = "Longitude", y = "Latitude", caption = "Data Source: USDA Forest Service FIA Annual Report") +
   coord_map() +
   scale_fill_viridis(option = "viridis", direction = -1) +
-  theme_linedraw()
+  theme_minimal()
 ```
 
 alt text: This is a choropleth map of the United States that is looking a the percentage of land area that is covered by forest in each state. The x-axis is the longitude values of the United States which contain values -120 - -80. The y-axis the latitude values of the United States which contain values 25-50. This map is colored by the percentage forest covereage with the most coverage being a dark purple while the least coverage is a bright yellow. From this map we can see that states in the East have a higher percentage of forest coverage while states in the middle have a much lower percent forest coverage, then the west coast has a medium amount of forest coverage.
@@ -98,7 +98,7 @@ frogs_static |>
                                "#fffac8",
                                "#aaffc3")) +
   coord_map() +
-  theme_linedraw()
+  theme_minimal()
 ```
 
 # Interactive Maps

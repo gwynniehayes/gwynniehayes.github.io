@@ -2,21 +2,23 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 
-// Images 
+// Rounds Images 
 .rounded-img {
   border-radius: 15px;
 }
+
+// Centers Images
 img {
   display: block;
   margin: 1rem auto;
 }
 
-// Text
+// centers text
 .center-text {
   text-align: center;
 }
-// Colors
 
+// Colors
 $orange: #FFA53F;
 $light-pink: #FFD9DA;
 $magenta: #89023E;

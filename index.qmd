@@ -17,10 +17,10 @@ editor_options:
 ---
 
 ::: text-center
-Homie Page, its like a home page but better!
+(homie page, its like a home page but better!)
 :::
 
-## Benny!! {#sec-benny .text-center}
+## Benny! {.text-center}
 
 ![](benny.jpeg){.rounded-img width="472"}
 
@@ -37,7 +37,5 @@ He is really fuzzy and large!
 ::: text-center
 This is Walter!
 
-He is very loud...
-
-It's annoying
+He is very loud. (It's annoying)
 :::
