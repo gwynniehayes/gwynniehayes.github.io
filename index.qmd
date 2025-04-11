@@ -1,18 +1,43 @@
 ---
-title: "Home"
-image: media/benny.jpeg
+title: "Homie Page"
+
 toc: false
+search: false
 about: 
   template: jolla
   image-shape: rounded
-  image-width: 30em
+  image-width: 20em
   links:
     - text: Github
       href: https://github.com/gwynniehayes/gwynniehayes.github.io
   
 editor_options: 
   chunk_output_type: console
-  viewer: source
+  viewer: Source
 ---
 
-Benny is really fuzzy and large!
+::: text-center
+Homie Page, its like a home page but better!
+:::
+
+## Benny!! {#sec-benny .text-center}
+
+![](benny.jpeg){.rounded-img width="472"}
+
+::: text-center
+This is Benny!
+
+He is really fuzzy and large!
+:::
+
+## Walter! {.text-center}
+
+![](tabs/media/walter.jpeg){.rounded-img width="645"}
+
+::: text-center
+This is Walter!
+
+He is very loud...
+
+It's annoying
+:::

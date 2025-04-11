@@ -1,0 +1,52 @@
+---
+title: "Who Even is This?"
+about: 
+  template: solana
+toc: false
+search: false
+editor_options: 
+  chunk_output_type: console
+  viewer: Source
+---
+
+![](media/gwynnie.jpeg){.rounded-img width="3.09in"}
+
+::: text-center
+My name is Gwynnie!
+
+I am a Junior Computer Science major with concentrations in Statistics and Data Science and Environmental Studies! I really like data and making things!
+:::
+
+------------------------------------------------------------------------
+
+::: text-center
+I work in the costume shop making clothes for the theater and dance departments
+:::
+
+![](media/costume1.jpeg){.rounded-img width="2.86in"}
+
+::: text-center
+This is the most recent thing I've made at work!
+:::
+
+------------------------------------------------------------------------
+
+::: text-center
+My favorite animal is a pacific chorus frog because they are simply the best!
+:::
+
+![](media/menfrog.jpg){.rounded-img width="333"}
+
+::: text-center
+MY FROGGY FRIEND!
+:::
+
+::: text-center
+However I think the most interesting frog is the pumpkin toadlet or Spix's Saddleback toad! It's a really small bright orange frog that has no right being a frog!
+:::
+
+![](media/pumpkintoadlet.jpeg){.rounded-img width="3in"}
+
+::: text-center
+Pumpkin Toadlet!
+:::

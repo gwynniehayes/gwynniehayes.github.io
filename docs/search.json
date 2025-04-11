@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Quarto Website Notes!",
     "section": "",
-    "text": "Creating a Function Website that actually makes the URL Work!\n\nBuild\nCommit\nPush"
+    "text": "Creating a Function Website that actually makes the URL Work!\n\nBuild\nCommit\nPush\n\nAdding Images\n\ndownload image\nin doc YAML\n\ndo “resources:”,\nindent then “- image/file/path/image.jpeg”\n\nreference image in doc with\n\n![](image.jpeg)"
   },
   {
     "objectID": "tabs/miniproj1.html",
@@ -84,10 +84,24 @@
     "text": "Future Uses of this Data\nFor future uses of this data we have a lot of things that we want to clean with string functions. We were also looking into census data for each county in Washington, which would be interesting to see if there is higher population in a county that has more forest fire activity. It would also be interesting to add spatial data to this to map the percentage of forest area affected by fires or other percentage maps."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
+    "objectID": "tabs/salmon_tummys.html",
+    "href": "tabs/salmon_tummys.html",
+    "title": "Diets of Juvenile Chinhook Salmon in PNW",
     "section": "",
-    "text": "Benny is really fuzzy and large!"
+    "text": "In Washington State, salmon are a big part of the water’s ecosystems and provide jobs and food to many people and animals. In elementary school most students spend time learning about the salmon cycle, even getting to raise their own fish. For this project we wanted to focus on something that was both interesting to us and held a bit of importance to our beloved home. Both of us were also intrigued by the prospect of this being someone’s job, going out and collecting this data. Over the course of this project we looked at the many different kinds of food that these juvenile chinhook salmon ate, how big they were,where these fish came from, and comparing the fish from hatcheries in various parts of the Pacific Northwest to the fish that were born in the wild. We examined the correlatory differences in the prey from both these sets of fish and the size of these fish.\n\n\n\nJuvenile Chinook salmon, Roger Tabor/USFWS, Public Domain, https://www.fws.gov/media/juvenile-chinook-salmon"
+  },
+  {
+    "objectID": "tabs/salmon_tummys.html#weight-of-fish-and-prey-type",
+    "href": "tabs/salmon_tummys.html#weight-of-fish-and-prey-type",
+    "title": "Diets of Juvenile Chinhook Salmon in PNW",
+    "section": "Weight of Fish and Prey Type",
+    "text": "Weight of Fish and Prey Type\nIn this second graph we are exploring how the weight of a salmon correlates with the type of food it eats.\n\n\n\n\n\n\n\n\n\nThe fact that some of the heaviest fish ate plankton could be surprising, especially after cephalopods, a much more likely high median, is just above.\nThis graph is much like the previous one with all the same axes, though now the boxplots are split by fish that were raised in hatcheries vs. those in the wild.\n\n\n\n\n\n\n\n\n\nInterestingly, there is a strong correlation of wild fish being the heavier on average in all categories, and the hatchery raised median weights are much lighter, and nearly identical (~25 grams) across all categories, implying much more homogeneity in their group."
+  },
+  {
+    "objectID": "tabs/salmon_tummys.html#length-of-fish-and-prey-type",
+    "href": "tabs/salmon_tummys.html#length-of-fish-and-prey-type",
+    "title": "Diets of Juvenile Chinhook Salmon in PNW",
+    "section": "Length of Fish and Prey Type",
+    "text": "Length of Fish and Prey Type\nFor our last size based graph we wanted to explore the length of the fish with how they correlate to the prey type eaten as compared to the weight graphs above. We also wanted to explore a graph with much more complication, and analyze it on many levels.\n\n\n\n\n\n\n\n\n\nThere’s a lot going on in this graph, but also some pretty interesting takeaways. The overall boxplots show that length has the same correlation with prey type as weight. The light gray beeswarm dots show that the hatchery fish once again are shorter than the whole group. Finally, the colored dots show the longest fish grouped by each hatchery."
   }
 ]
