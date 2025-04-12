@@ -67,7 +67,7 @@ I also really like to cook and bake!
 Here's some things I've made!
 :::
 
-## Cakes
+## Cakes!
 
 :::::::: columns
 ::: {.column width="20%"}
@@ -111,7 +111,7 @@ Here's some things I've made!
 :::
 :::::::
 
-## Other Culinary Endeavors
+## Other Culinary Endeavors!
 
 :::::::: columns
 ::: {.column width="20%"}
@@ -123,7 +123,7 @@ Here's some things I've made!
 :::
 
 ::: {.column width="20%"}
-![Ravioli also made with Aria)](media/ravioli.jpeg)
+![Ravioli also made with Aria](media/ravioli.jpeg)
 :::
 
 ::: {.column width="20%"}
@@ -131,6 +131,6 @@ Here's some things I've made!
 :::
 
 ::: {.column width="20%"}
-![Pizza! a Family Speciality](media/pizza.jpeg)
+![Pizza! A Family Specialty!](media/pizza.jpeg)
 :::
 ::::::::

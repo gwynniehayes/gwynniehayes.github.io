@@ -10,6 +10,8 @@ about:
   links:
     - text: Github
       href: https://github.com/gwynniehayes/gwynniehayes.github.io
+    - text: Email Me
+      href: mailto:hayes5@stolaf.edu
   
 editor_options: 
   chunk_output_type: console
@@ -22,7 +24,7 @@ editor_options:
 
 ## Benny! {.text-center}
 
-![](benny.jpeg){.rounded-img width="472"}
+![](tabs/media/benny.jpeg){.rounded-img width="409"}
 
 ::: text-center
 This is Benny!
@@ -32,7 +34,7 @@ He is really fuzzy and large!
 
 ## Walter! {.text-center}
 
-![](tabs/media/walter.jpeg){.rounded-img width="645"}
+![](tabs/media/walter.jpeg){.rounded-img width="409"}
 
 ::: text-center
 This is Walter!

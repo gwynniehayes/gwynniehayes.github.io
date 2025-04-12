@@ -13,6 +13,6 @@ Adding Images
 1.  download image
 2.  in doc YAML
     1.  do "resources:",
-    2.   indent then "- image/file/path/image.jpeg"
+    2.  indent then "- image/file/path/image.jpeg"
 3.  reference image in doc with
     1.  \![\](image.jpeg)
