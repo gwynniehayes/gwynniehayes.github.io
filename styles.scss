@@ -33,8 +33,22 @@ $navbar-hl: $light-blue; // highlight color when hovering over navbar links
 $body-bg: $light-pink; // page background 
 $body-color: $green; // page text 
 $footer-bg: $magenta; // footer 
-$link-color: $light-blue; // hyperlinks 
+$link-color: $green; // hyperlinks 
+$figure-caption-color: $green;
+$table-caption-color: $green;
 
 // Inline code
 $code-bg: $magenta; // inline code background color
 $code-color: $light-blue; // inline code text color
+
+table caption {
+  color: $table-caption-color;
+}
+
+figcaption {
+  color: $figure-caption-color;
+}
+
+imagecaption {
+  color: $green ;
+}

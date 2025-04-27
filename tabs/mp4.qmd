@@ -1,0 +1,354 @@
+---
+title: "Mini Project #4"
+subtitle: "Text Analysis"
+author: "Gwynnie Hayes"
+editor_options: 
+  chunk_output_type: console
+format:
+  html:
+    code-links:
+      - text: Cleaning Code
+        href: https://github.com/gwynniehayes/SDS264/blob/main/projects/MP4/%20MP4_cleaning.qmd
+      - text: Document Code
+        href: https://github.com/gwynniehayes/SDS264/blob/main/projects/MP4/MP4.qmd
+---
+```{r}
+#| include: FALSE
+#| warning: FALSE
+#| echo: false
+
+library(tidyverse)
+library(tidytext)
+library(textdata)
+library(stringr)
+library(purrr)
+library(kableExtra)
+library(gridExtra)
+library(viridis)
+library(ggthemes)
+library(widyr)
+library(ggraph)
+library(igraph)
+```
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+
+ih_songs <- read_csv("~/Desktop/15/SDS264/projects/MP4/data/final_ihsongs.csv") |>
+  select("Song", "lyric", "album") |>
+  mutate(Song = str_replace_all(Song, "will i get cancelled if i write a song called,  if you were a man you'd be so cancelled", "will i get cancelled")) |>
+  unnest_tokens("lyric", "lyric", token = "words") |>
+  rename(word = lyric) |>
+  group_by(album)
+```
+
+------------------------------------------------------------------------
+
+# Introduction
+
+One of my favorite bands is called Illuminati Hotties, what I love about them is that all the songs are very different and unique. The main artist is named Sarah Tudzin and in her professional life she is a music producer for many much more popular artists. She also writes and produces her own music and what I think is really cool about it is she just has fun making a bunch of cool and unique sounds, that aren't dictated by someone else.
+
+Some of my friends and I went to a concert for another artist called Pom Pom Squad almost 6 years ago at this point where we were first introduced to her and have been hooked ever since, one of the things we always talk about is the uniqueness of her music and the interesting and sometimes slightly disturbing lyrics she uses in her songs. This led me to wanting to do a text analysis of her song lyrics.
+
+------------------------------------------------------------------------
+
+# Data!
+
+There was not a data set of her song lyrics as she is not a very famous artist so i made the maybe silly decision to scrape all the lyrics off the web myself and make my own data set. I did all of this in a document called MP4_cleaning.qmd because it was a lot of code that was not important to the actual project results, it is however linked in my github and on this website page.
+
+What I did was used the web page scraping functions that we made in class to make a similar function that I could input the names of the songs into. I first tried to do all the songs at once but was running into issues with my IP address getting blocked from requesting too much data so I had to break down the songs into smaller requests and I made 10 individual csv files that I then bind_row() into one full data set. This however was only the names of the songs and the lyrics and I wanted an album name which was a little more complicated because the website I used to get the lyrics did not have the album name on the page that the song lyrics were on. So I just did a bunch of if else statements to add the new column. This definitely was not the most efficient method of doing this but its what I did because it was more familiar for a part of the project that was completely unnecessary.
+
+```{r}
+#| echo: FALSE
+
+kable(head(ih_songs))
+```
+
+This is what the data set looks like after I read it into this document and did some final cleaning!
+
+------------------------------------------------------------------------
+
+Illuminati Hotties have 5 albums and a couple singles that I am analyzing together as one "album".
+
+:::::::: columns
+::: {.column width="20%"}
+![Let Me Do One More](media/letmedoonemoe.jpg){.rounded-img}
+:::
+
+::: {.column width="20%"}
+![Kiss Yr Frenemies](media/kissyrfrenemies.jpg){.rounded-img}
+:::
+
+::: {.column width="20%"}
+![Free I.H: This is Not the One You've Been Waiting For](media/freeih.jpg){.rounded-img}
+:::
+
+::: {.column width="20%"}
+![Nickel on the Fountain Floor](media/nickelonfountain.jpg){.rounded-img}
+:::
+
+::: {.column width="20%"}
+![Power](media/power.jpg){.rounded-img}
+:::
+::::::::
+
+------------------------------------------------------------------------
+
+# Questions
+
+Some things I want to explore with in this data set are:
+
+-   Most common words in general, in each song and in each album
+-   Sentient analysis of each album
+-   Network Graph and Correlation
+
+------------------------------------------------------------------------
+
+# Word Counts
+
+I first wanted to just look at the most common word in all of her songs in general and found what was expected, words like "I", "you" and "the" were the most commonly used words.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+ih_songs |>
+  count(word) |>
+  slice_max(n, n = 1) |>
+  arrange(desc(n)) |>
+    head() |>
+  kable("html", align = 'clc', caption = 'Most Common Words for All Songs') |>
+    kable_styling(full_width = T)
+```
+
+To look at just the most common useful words I anti_joined my data set with the set of of smart stop words. Also some of the most common words are not full words and are sounds as words, so I filtered them out using str functions and then looked at the most common words in each album again.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+smart_stopwords <- get_stopwords(source = "smart") 
+smartFreeIH <- ih_songs |> anti_join(smart_stopwords)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+smartFreeIH |>
+    filter(!str_detect(word, "^([a-z])\\1$"), 
+         !str_detect(word, "^([aeiou]*[a-z]$)"), 
+         !str_detect(word, "^([a-z][a-z]$)")) |> 
+  group_by(album) |>
+  count(word, sort = TRUE) |>
+  slice_max(n, n = 1) |>
+  kable("html", align = 'clc', caption = 'Most Common Smart Word for Each Album') |>
+    kable_styling(full_width = T, position = "float_right")
+
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+smartFreeIH |>
+    filter(!str_detect(word, "^([a-z])\\1$"), 
+         !str_detect(word, "^([aeiou]*[a-z]$)"), 
+         !str_detect(word, "^([a-z][a-z]$)")) |>
+  group_by(Song) |> 
+  count(word) |>
+  slice_max(n, n = 1, with_ties = FALSE) |>
+  arrange(desc(n)) |> 
+  kable("html", align = 'clc', caption = 'Most Common Word for Each Song') |>
+    kable_styling(full_width = T, position = "float_right")
+```
+
+Graphs to visualize the most common words!
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+smartFreeIH |>
+  filter(!str_detect(word, "^([a-z])\\1$"), 
+         !str_detect(word, "^([aeiou]*[a-z]{2}$)"), 
+         !str_detect(word, "^([a-z][a-z]$)")) |> 
+  ungroup(album) |>
+  count(word) |>
+  arrange(desc(n)) |>
+  slice_max(n, n = 10) |>
+  ggplot(aes(fct_reorder(word, n), n)) +
+  geom_col() +
+  coord_flip() +
+  theme_linedraw(base_size = 10) +
+  labs(x = "Word Count", y = "Word", title = "10 Most Common Words in All Songs") 
+
+smartFreeIH |>
+  filter(!str_detect(word, "^([a-z])\\1$"), 
+         !str_detect(word, "^([aeiou]*[a-z]{2}$)"), 
+         !str_detect(word, "^([a-z][a-z]$)")) |> 
+  count(word, sort = TRUE) |>
+  slice_max(n, n = 10) |>
+  ungroup() |> 
+  ggplot(aes(fct_reorder(word, n), n, fill = album)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() + 
+  facet_wrap(~album, scales = "free_y") +
+  scale_fill_brewer(palette = "Dark2") + theme_linedraw() +
+  labs(x = "Word Count", y = "Word", title = "10 Most Common Words in Each Album")
+```
+
+------------------------------------------------------------------------
+
+# Sentiment Analysis
+
+I am really curious about the sentiment analysis of her songs because they lyrics are seemingly random and make not a lot of sense on their own. Also compared to the vibe of the song they sentiment seems to be all over the place. Something I would love to do in the future is add variables that relate to the "vibe" of the song similar to the Spotify data that we have used, there is an energy variable and a couple others that would be interesting to look at compared to the actual text sentiment analysis.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+nrc_sentiments <- get_sentiments(lexicon = "nrc") |>
+  filter(sentiment != "negative", sentiment != "positive")
+bing_sentiments <- get_sentiments(lexicon = "bing")
+afinn_sentiments <- get_sentiments(lexicon = "afinn")
+
+IH_sentiment_emotion <- smartFreeIH |>
+    inner_join(nrc_sentiments) 
+
+IH_sentiment_bing <- smartFreeIH |>
+    inner_join(bing_sentiments) 
+
+IH_sentiment_score <- smartFreeIH |>
+    inner_join(afinn_sentiments) 
+
+IH_sentiment_emotion |>
+  count(sentiment) |>
+    arrange(desc(n)) |>
+  slice_max(n, n = 1, with_ties = FALSE) |>
+  kable("html", align = 'clc', caption = 'Emotion of Each Album') |>
+    kable_styling(full_width = T, position = "float_right")
+
+IH_sentiment_score |>
+  count(value) |>
+  arrange(desc(n)) |>
+  slice_max(n, n = 1) |>
+  kable("html", align = 'clc', caption = 'Sentiment Score of Each Album') |>
+    kable_styling(full_width = T, position = "float_right")
+
+IH_sentiment_bing |>
+  count(sentiment) |>
+    arrange(desc(n)) |>
+  slice_max(n, n = 1, with_ties = FALSE) |>
+  kable("html", align = 'clc', caption = 'Positive vs. Negative Sentiment of Each Album') |>
+    kable_styling(full_width = T, position = "float_right")
+
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+IH_sentiment_bing |>
+  count(Song, album, sentiment) |>
+  pivot_wider(names_from = sentiment, values_from = n) |>
+  mutate(sentiment = positive - negative) |>
+  ggplot(aes(x = Song, y = sentiment, fill = album)) +
+    geom_col(show.legend = FALSE) +
+  theme_linedraw(base_size = 8) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1)) +
+  scale_fill_brewer(palette = "Dark2") + 
+  facet_grid(~album, scales = "free_x") +
+  labs(title = "Positive or Negative Sentiment for Each Song by Album (Bing Sentiments)", x = "Song", y = "Sentiment")
+  
+IH_sentiment_emotion |>
+  count(sentiment) |>
+    arrange(desc(n)) |>
+  slice_max(n, n = 1, with_ties = FALSE) |>
+  ggplot(aes(x = n, y = album , fill = sentiment)) +
+  geom_col() +
+  theme_linedraw() + 
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = "Sentiment of Each Album (NRC Sentiments)", y = "Album", x = "Sentiment Count", fill = "Sentiment")
+
+IH_sentiment_score |>
+    count(Song, album, value) |>
+  ggplot(aes(x = Song, y = value, fill = album)) +
+    geom_col(show.legend = FALSE) +
+  theme_linedraw(base_size = 8) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1)) +
+  scale_fill_brewer(palette = "Dark2") + 
+  facet_grid(~album, scales = "free_x") +
+  labs(title = "Sentiment Scores for Each Song by Album (affin Sentiments)", x = "Song", y = "Sentiment")
+```
+
+------------------------------------------------------------------------
+
+# Correlations
+
+I also wanted to look at the correlations between some of the most common words in the songs.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+word_pairs <- smartFreeIH |>
+  pairwise_count(word, Song, sort = TRUE)
+
+word_cors <- smartFreeIH |>
+    filter(!str_detect(word, "^([a-z])\\1$"), 
+         !str_detect(word, "^([aeiou]*[a-z]{2}$)"), 
+         !str_detect(word, "^([a-z][a-z]$)")) |> 
+  group_by(word) |>
+  filter(n() >= 10) |>
+  pairwise_cor(word, Song, sort = TRUE)
+
+word_cors |>
+  filter(item1 %in% c("love", "day", "content", "wanna")) |>
+  group_by(item1) |>
+  slice_max(correlation, n = 6) |>
+  ungroup() |>
+  mutate(item2 = reorder(item2, correlation)) |>
+  ggplot(aes(item2, correlation, fill = item1)) +
+    geom_bar(stat = "identity", show.legend = FALSE) +
+    facet_wrap(~ item1, scales = "free") +
+    coord_flip() +
+  theme_linedraw() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = "Correlation of Common Words", y = "Most Commonly Correlated Words", x = "Correlation Value")
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+set.seed(2016)
+
+word_cors |>
+  filter(correlation > .25) |>
+  graph_from_data_frame() |>
+  ggraph(layout = "fr") +
+    geom_edge_link(aes(edge_alpha = correlation), show.legend = FALSE) +
+    geom_node_point(color = "pink", size = 5) +
+    geom_node_text(aes(label = name), repel = TRUE) +
+    theme_linedraw() +
+  labs(title = "Correlation Network of Words in All Songs", x = " ", y = " ")
+```
+
+# Fun Fact!!
+
+In the song "Pool Hopping" the first verse goes:
+
+In every life there is a bell One rounded curve of time or tell I'm on the left half looking Over, over, over, uh-huh
+
+Referencing being on the left side of a a bell curve! That's statistical and semi-relevant!
