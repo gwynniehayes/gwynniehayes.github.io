@@ -187,7 +187,7 @@ smartFreeIH |>
   geom_col() +
   coord_flip() +
   theme_linedraw(base_size = 10) +
-  labs(x = "Word Count", y = "Word", title = "10 Most Common Words in All Songs") 
+  labs(x = "Word", y = "Word Count", title = "10 Most Common Words in All Songs") 
 
 smartFreeIH |>
   filter(!str_detect(word, "^([a-z])\\1$"), 
@@ -201,7 +201,7 @@ smartFreeIH |>
   coord_flip() + 
   facet_wrap(~album, scales = "free_y") +
   scale_fill_brewer(palette = "Dark2") + theme_linedraw() +
-  labs(x = "Word Count", y = "Word", title = "10 Most Common Words in Each Album")
+  labs(x = "Word", y = "Word Count", title = "10 Most Common Words in Each Album")
 ```
 
 ------------------------------------------------------------------------
