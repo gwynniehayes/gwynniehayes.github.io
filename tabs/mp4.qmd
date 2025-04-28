@@ -49,7 +49,7 @@ ih_songs <- read_csv("~/Desktop/15/SDS264/projects/MP4/data/final_ihsongs.csv") 
 
 One of my favorite bands is called Illuminati Hotties, what I love about them is that all the songs are very different and unique. The main artist is named Sarah Tudzin and in her professional life she is a music producer for many much more popular artists. She also writes and produces her own music and what I think is really cool about it is she just has fun making a bunch of cool and unique sounds, that aren't dictated by someone else.
 
-Some of my friends and I went to a concert for another artist called Pom Pom Squad almost 6 years ago at this point where we were first introduced to her and have been hooked ever since, one of the things we always talk about is the uniqueness of her music and the interesting and sometimes slightly disturbing lyrics she uses in her songs. This led me to wanting to do a text analysis of her song lyrics.
+Some of my friends and I went to a concert for another artist called Pom Pom Squad almost 4 years ago at this point where we were first introduced to her and have been hooked ever since, one of the things we always talk about is the uniqueness of her music and the interesting and sometimes slightly disturbing lyrics she uses in her songs. This led me to wanting to do a text analysis of her song lyrics.
 
 ------------------------------------------------------------------------
 
