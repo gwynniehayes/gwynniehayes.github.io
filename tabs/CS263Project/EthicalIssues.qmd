@@ -1,5 +1,5 @@
 ---
-title: "Ethcial Issues"
+title: "Ethical Issues"
 format:
   html:
     toc: false
