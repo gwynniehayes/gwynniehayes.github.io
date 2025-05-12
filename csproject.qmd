@@ -8,7 +8,7 @@ editor_options:
   viewer: Source
 ---
 
-# Table of Contents
+## Table of Contents
 
 1.  [Home](csproject.qmd)
 2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
@@ -16,6 +16,8 @@ editor_options:
 4.  [Explore](tabs/CS263Project/explore.qmd)
 5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
 6.  [Resources](tabs/CS263Project/Resources.qmd)
+
+------------------------------------------------------------------------
 
 ## What is remote sensing?
 

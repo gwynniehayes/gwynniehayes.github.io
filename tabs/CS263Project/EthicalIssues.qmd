@@ -5,14 +5,16 @@ format:
     toc: false
 ---
 
-# Table of Contents
+## Table of Contents
 
-1.  [Home](csproject.qmd)
-2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
-3.  [Ethical Issues](tabs/CS263Project/EthicalIssues.qmd)
-4.  [Explore](tabs/CS263Project/explore.qmd)
-5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
-6.  [Resources](tabs/CS263Project/Resources.qmd)
+1.  [Home](home.qmd)
+2.  [Common Questions](commonqs.qmd)
+3.  [Ethical Issues](EthicalIssues.qmd)
+4.  [Explore](explore.qmd)
+5.  [Try it for Yourself!](remotesensing.qmd)
+6.  [Resources](Resources.qmd)
+
+------------------------------------------------------------------------
 
 There are many ethical issues to consider when talking about remote sensing. These are important to consider because there is very little public conversation about what remote sensing is. It is not an issue that is brushed under the table but it is not something that is widely discussed.
 
