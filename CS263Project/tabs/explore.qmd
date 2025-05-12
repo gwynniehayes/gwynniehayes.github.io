@@ -1,0 +1,47 @@
+---
+title: "Explore"
+format:
+  html:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| warning: FALSE
+#| echo: FALSE
+
+library(leaflet)
+library(tmap)
+library(tidyverse)
+
+case_studies <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io/CS263Project/tabs/CS263Case Studies.csv") |>
+  janitor::clean_names()
+```
+
+### Explore Places where Remote Sensing had been used with Artifical Intelligence!
+
+```{r}
+#| warning: FALSE
+#| echo: FALSE
+
+
+leaflet(data = case_studies) |>
+  addProviderTiles("Esri.WorldImagery") |>
+  addMarkers(~longitude, 
+             ~latitude, 
+             popup = ~paste(
+               "<b>Project:</b>", name, "<br>", 
+               "<b>AI Used:</b>", ai_used, "<br>",
+               "<b>Type of Sensing:</b>", type_of_sensing,"<br>", 
+               "<b>Goal of Project:</b>", goal, "<br>",
+               "<b>Project Description:</b>", description, "<br>",
+               "<b>End Result:</b>", end_result, "<br>"),
+             label = ~name)
+```
+
+## What does Remote Sensing Actually Look Like?
+
+![](media/lakeeriesensed.jpeg){width="5in"}
+
+This is an example of what an image generated from remote sensing algorithms looks like. It is highlighting the areas in which large harmful algal blooms are present in Lake Erie. In this specific example we can see the migration of these algal blooms over time.

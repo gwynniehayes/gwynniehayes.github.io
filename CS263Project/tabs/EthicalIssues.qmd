@@ -1,0 +1,38 @@
+---
+title: "Ethcial Issues"
+format:
+  html:
+    toc: false
+---
+
+There are many ethical issues to consider when talking about remote sensing. These are important to consider because there is very little public conversation about what remote sensing is. It is not an issue that is brushed under the table but it is not something that is widely discussed.
+
+### Privacy and Surveillance:
+
+#### Unconsented observation: 
+Remote sensing can capture data about individuals, communities, or private properties without their knowledge or consent.
+
+#### Mass surveillance: 
+  Governments or companies might use remote sensing for population monitoring or political control, raising civil liberty concerns.
+
+### Informed Consent:
+Often, people or communities being observed are unaware that data is being collected about them, which violates the ethical principle of informed consent.
+
+### Data Misuse:
+
+#### Military or political exploitation: 
+Remote sensing data can be used for targeting in conflicts or for espionage.
+
+#### Commercial exploitation: 
+Companies may sell or use satellite imagery to exploit natural resources or real estate without local stakeholder involvement.
+
+### Bias and Representation:
+
+Data interpretation can be biased, especially when used to inform policies affecting vulnerable communities. Remote sensing may overlook cultural or social contexts, leading to technocratic or top-down decisions that ignore local knowledge.
+
+### Environmental and Social Impact:
+Drone usage may disrupt wildlife or intrude on indigenous lands. Decisions based on remote sensing (e.g., for urban planning, disaster relief) may inadvertently marginalize already disadvantaged populations.
+
+### Data Ownership and Access:
+
+Who owns the data? Satellite imagery is often controlled by governments or private corporations, limiting transparency and equitable access for affected communities.

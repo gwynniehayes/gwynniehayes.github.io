@@ -1,0 +1,16 @@
+---
+title: "Remote Sensing"
+format: html
+---
+
+This first app is a program I made that takes the input of an image that the user can upload, then it makes the image into a raster and averages out the colors in the image into a specified number of groups. The output of this program can detect buildings and trees in images which is similar to what remote sensing can do. This however is a much more manual process then what machine learning in remote sensing can do.
+
+<iframe src="https://gwynyn.shinyapps.io/shinywebsite/" width="800" height="700">
+
+</iframe>
+
+This is package that is accessible in R, called "osmdata" that detects specific things in a map in a specified location. It can detect buildings, roads, water, forests and many other things.
+
+<iframe src="https://gwynyn.shinyapps.io/OSMApp/" width="800" height="600">
+
+</iframe>

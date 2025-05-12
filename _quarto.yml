@@ -15,6 +15,16 @@ website:
           - tabs/miniproj2.qmd
           - tabs/salmon_tummys.Rmd
           - tabs/mp4.qmd
+      - text: CS 263 Project
+        menu:
+        - CS263Project/about.qmd
+        - CS263Project/index.qmd
+        - CS263Project/tabs/explore.qmd
+        - CS263Project/tabs/EthicalIssues.qmd
+        - CS263Project/tabs/remotesensing.qmd
+        - CS263Project/tabs/Resources.qmd
+        
+          
 format:
   html:
     theme: styles.scss 

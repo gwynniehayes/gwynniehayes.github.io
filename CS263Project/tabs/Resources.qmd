@@ -1,0 +1,58 @@
+---
+title: "Resources"
+format:
+  html:
+    toc: false
+---
+
+### Picture Sources
+["Optical Remote Sensing." Centre for Remote Imaging, Sensing and Processing (CRISP), National University of Singapore](https://crisp.nus.edu.sg/~research/tutorial/optical.htm).
+
+["InSAR: Satellite-Based Technique Captures Overall Deformation Picture." U.S. Geological Survey (USGS)](https://www.usgs.gov/programs/VHP/insar-satellite-based-technique-captures-overall-deformation-picture).
+
+"[LiDAR vs Photogrammetry: Key Differences and Applications." YellowScan](https://www.yellowscan.com/knowledge/lidar-vs-photogrammetry-key-differences-and-applications/).
+
+["MODIS Platforms." NASA GSFC: Atmosphere Imager](https://atmosphere-imager.gsfc.nasa.gov/links/modis-platforms).
+
+["Example Image of NOAA's Lake Erie HAB Tracker." ResearchGate](https://www.researchgate.net/figure/Example-image-of-NOAAs-Lake-Erie-HAB-tracker-a-tool-that-combines-remote-sensing_fig1_299461504).
+
+["Landsat Missions." ESA Earth Online, European Space Agency](https://earth.esa.int/eogateway/missions/landsat).
+
+["What Are the Different Types of Sensors Used in UAV Remote Sensing?" LinkedIn Pulse](https://www.linkedin.com/pulse/what-different-types-sensors-used-uav-remote-sensing-ecko360-shvsc).
+
+### Case Study Sources
+
+["HABs and Hypoxia." NOAA Great Lakes Environmental Research Laboratory](https://www.glerl.noaa.gov/res/HABs_and_Hypoxia/).
+
+["Wildfire and Ecosystem Resilience Risk Assessment." California Natural Resources Agency](https://resources.ca.gov/Initiatives/Forest-Stewardship/Wildfire-Ecosystem-Resilience-Risk-Assessment).
+
+["Regional-Scale Hydrological Monitoring of Wetlands with Sentinel-1 InSAR." NASA Earth Science Division Publications](https://esdpubs.nasa.gov/content/Regional-scale_hydrological_monitoring_of_wetlands_with_Sentinel-1_InSAR_T_observations_Case).
+
+[Müller, Karen, et al. "The Role of Satellite Remote Sensing in Marine Pollution Monitoring." Marine Pollution Bulletin, vol. 137, 2018, pp. 519–530](https://www.sciencedirect.com/science/article/pii/S0025326X18306441).
+
+["Lasers and Satellites Help Us Map and Restore the Chesapeake Watershed." Chesapeake Bay Program](https://www.chesapeakebay.net/news/blog/lasers-and-satellites-help-us-map-and-restore-the-chesapeake-watershed).
+
+["Remote Sensing." Geophysical Institute, University of Alaska Fairbanks](https://permafrost.gi.alaska.edu/content/remote-sensing).
+
+["Confronting the Great Salt Lake’s Dust Dilemmas." Utah Division of Water Resources](https://water.utah.gov/confronting-great-salt-lakes-dust-dilemmas/).
+
+### General Information Sources
+
+["What Is Remote Sensing and What Is It Used For?" U.S. Geological Survey (USGS)](https://www.usgs.gov/faqs/what-remote-sensing-and-what-it-used.)
+
+["Artificial Intelligence." IBM Think](https://www.ibm.com/think/topics/artificial-intelligence).
+
+["What Is the Landsat Satellite Program and Why Is It Important?" U.S. Geological Survey (USGS)](https://www.usgs.gov/faqs/what-landsat-satellite-program-and-why-it-important).
+
+["Sentinel-2." European Space Agency (ESA)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2).
+
+[Bermudez, Marc, et al. "UAV-Based Remote Sensing: A Centimeter or Millimeter Resolution Revolution." Drones, vol. 7, no. 6, 2023](https://www.mdpi.com/2504-446X/7/6/398).
+
+["AI Object Detection." Datenwissen](https://datenwissen.com/blog/ai-object-detection/).
+
+["Neural Network Pattern Recognition." Viso Suite](https://viso.ai/deep-learning/pattern-recognition/).
+
+["Image Classification in Computer Vision." Viso Suite](https://viso.ai/computer-vision/image-classification/).
+
+["Feature Extraction." IBM Think](https://www.ibm.com/think/topics/feature-extraction/).
+
