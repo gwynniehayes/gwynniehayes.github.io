@@ -5,7 +5,17 @@ format:
     toc: false
 ---
 
+# Table of Contents
+
+1.  [Home](csproject.qmd)
+2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
+3.  [Ethical Issues](tabs/CS263Project/EthicalIssues.qmd)
+4.  [Explore](tabs/CS263Project/explore.qmd)
+5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
+6.  [Resources](tabs/CS263Project/Resources.qmd)
+
 ### Picture Sources
+
 ["Optical Remote Sensing." Centre for Remote Imaging, Sensing and Processing (CRISP), National University of Singapore](https://crisp.nus.edu.sg/~research/tutorial/optical.htm).
 
 ["InSAR: Satellite-Based Technique Captures Overall Deformation Picture." U.S. Geological Survey (USGS)](https://www.usgs.gov/programs/VHP/insar-satellite-based-technique-captures-overall-deformation-picture).
@@ -55,4 +65,3 @@ format:
 ["Image Classification in Computer Vision." Viso Suite](https://viso.ai/computer-vision/image-classification/).
 
 ["Feature Extraction." IBM Think](https://www.ibm.com/think/topics/feature-extraction/).
-

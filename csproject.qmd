@@ -1,17 +1,29 @@
 ---
-title: "Ethical Issues in Remote Sensing"
-format:
-  html:
-    toc: false
+title: "Ethics of Remote Sensing"
+toc: false
+search: false
+editor_options: 
+  
+  chunk_output_type: console
+  viewer: Source
 ---
+
+# Table of Contents
+
+1.  [Home](csproject.qmd)
+2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
+3.  [Ethical Issues](tabs/CS263Project/EthicalIssues.qmd)
+4.  [Explore](tabs/CS263Project/explore.qmd)
+5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
+6.  [Resources](tabs/CS263Project/Resources.qmd)
 
 ## What is remote sensing?
 
 Remote sensing is the use of satellites or low flying air crafts to scan the earth in order to obtain geographic information about the area. This data is then stored in digital images, which then can be used with image processing techniques to detect and “sense” specific things in the environment of the image.
 
-This is done by measuring the reflected and emitted radiation from the physical characteristics of the landscape at a distance. Low Earth Orbit (LEO) Satellites are a common system used to do remote sensing, see the [Common Questions](about.qmd) page to learn more about different types of remote sensing systems.
+This is done by measuring the reflected and emitted radiation from the physical characteristics of the landscape at a distance. Low Earth Orbit (LEO) Satellites are a common system used to do remote sensing, see the [Common Questions](tabs/CS263Project/commonqs.qmd) page to learn more about different types of remote sensing systems.
 
-![](tabs/media/remotesensing.png)
+![](tabs/CS263Project/media/remotesensing.png){.rounded-img}
 
 ## What is artificial intelligence?
 
@@ -24,9 +36,13 @@ There are many different types of artificial intelligence but the one that is mo
 Machine learning is used in remote sensing to analyze the large amounts of spatial data that is produced. It can be used for:
 
 1.  Image Classification
+
 2.  Object Detection
+
 3.  Pattern Recognition
+
 4.  Feature Extraction
+
 5.  Data Fusion
 
-Learn more about these different uses of AI in Remote Sensing on the [Common Questions](about.qmd) page.
+Learn more about these different uses of AI in Remote Sensing on the [Common Questions](tabs/CS263Project/commonqs.qmd) page.

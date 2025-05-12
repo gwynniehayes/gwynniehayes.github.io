@@ -7,6 +7,15 @@ editor_options:
   chunk_output_type: console
 ---
 
+# Table of Contents
+
+1.  [Home](csproject.qmd)
+2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
+3.  [Ethical Issues](tabs/CS263Project/EthicalIssues.qmd)
+4.  [Explore](tabs/CS263Project/explore.qmd)
+5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
+6.  [Resources](tabs/CS263Project/Resources.qmd)
+
 ```{r}
 #| warning: FALSE
 #| echo: FALSE
@@ -15,7 +24,7 @@ library(leaflet)
 library(tmap)
 library(tidyverse)
 
-case_studies <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io/CS263Project/tabs/CS263Case Studies.csv") |>
+case_studies <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io/tabs/CS263Project/CS263Case Studies.csv") |>
   janitor::clean_names()
 ```
 
@@ -42,6 +51,14 @@ leaflet(data = case_studies) |>
 
 ## What does Remote Sensing Actually Look Like?
 
-![](media/lakeeriesensed.jpeg){width="5in"}
+![](media/lakeeriesensed.jpeg){.rounded-img width="5in"}
 
 This is an example of what an image generated from remote sensing algorithms looks like. It is highlighting the areas in which large harmful algal blooms are present in Lake Erie. In this specific example we can see the migration of these algal blooms over time.
+
+[![](media/building%20detection.png){.rounded-img}](https://www.researchgate.net/figure/Building-detection-results-a-Original-very-high-resolution-VHR-remote-sensing_fig4_327044613?__cf_chl_tk=RRUYyEMZOIERqAZ1yU9XfnOM9wsDEfr6npk_Tqio4dM-1747019869-1.0.1.1-v4y9HLkaZZt.2Hsjtj31KUmwBQt9ZESjhRDrpMXlG7o)
+
+Building Detection
+
+[![](media/buildingextraction.png){.rounded-img}](https://www.mdpi.com/1996-1073/14/23/7982)
+
+Building Extraction

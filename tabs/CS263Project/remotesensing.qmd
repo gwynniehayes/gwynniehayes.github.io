@@ -1,7 +1,17 @@
 ---
 title: "Remote Sensing"
 format: html
+toc: false
 ---
+
+# Table of Contents
+
+1.  [Home](csproject.qmd)
+2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
+3.  [Ethical Issues](tabs/CS263Project/EthicalIssues.qmd)
+4.  [Explore](tabs/CS263Project/explore.qmd)
+5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
+6.  [Resources](tabs/CS263Project/Resources.qmd)
 
 This first app is a program I made that takes the input of an image that the user can upload, then it makes the image into a raster and averages out the colors in the image into a specified number of groups. The output of this program can detect buildings and trees in images which is similar to what remote sensing can do. This however is a much more manual process then what machine learning in remote sensing can do.
 

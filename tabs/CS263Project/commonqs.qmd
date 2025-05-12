@@ -5,31 +5,40 @@ format:
     toc: false
 ---
 
+# Table of Contents
+
+1.  [Home](csproject.qmd)
+2.  [Common Questions](tabs/CS263Project/commonqs.qmd)
+3.  [Ethical Issues](tabs/CS263Project/EthicalIssues.qmd)
+4.  [Explore](tabs/CS263Project/explore.qmd)
+5.  [Try it for Yourself!](tabs/CS263Project/remotesensing.qmd)
+6.  [Resources](tabs/CS263Project/Resources.qmd)
+
 ## Types of Remote Sensing
 
 1.  **LiDAR:** Light Detection and Ranging, is a method of remote sensing that uses light from pulsed lasers to measure the distances pulsed to get an accurate 3-D readings of the land.
 
-![](tabs/media/lidar.jpg){width="5in"}
+![](media/lidar.jpg){.rounded-img width="5in"}
 
 2.  **MODIS:** Moderate Resolution Imaging Spectroradiometer, is an instrument on the Terra and Aqua Satellites that scan the Earth's surface as the satellites orbit. MODIS views the entire Earth every 1-2 days.
 
-    ![](tabs/media/modis.jpg){width="300"}
+    ![](media/modis.jpg){.rounded-img width="3in"}
 
 3.  **InSAR:** Interferometric Synthetic Aperture Radar, is imaging that maps ground deformations. InSAR uses radar imaging that penetrates cloud and weather coverage to get accurate readings of the Earth's surface.
 
-    ![](tabs/media/InSAR.jpeg){width="300"}
+    ![](media/InSAR.jpeg){.rounded-img width="3in"}
 
 4.  **Landsat:** The Landsat Satellite Program is a satellite that is constantly acquiring data, from space based imaging of moderate land monitoring. It captures multi-spectral images of the land surface.
 
-    ![](tabs/media/landsat.jpg){width="5in"}
+    ![](media/landsat.jpg){.rounded-img width="5in"}
 
 5.  **Sentinel-2:** is a Europe based satellite imagery program that uses 2 satellites in orbit for multi-spectral imaging of the land and vegetation.
 
-    ![](tabs/media/Sentinel2.jpg){width="5in"}
+    ![](media/Sentinel2.jpg){.rounded-img width="5in"}
 
 6.  **Drones:** UAV Remote Sensing is the use of unmanned aerial vehicles equipped with sensors that are constantly scanning a specific area of the Earth's surface when they are in the air. These UAV's can be equipped with LiDAR sensors, MODIS sensors, InSAR sensors and many others. They are alternative to satellite imaging.
 
-    ![](tabs/media/drones.jpeg){width="5in"}
+    ![](media/drones.jpeg){.rounded-img width="5in"}
 
 ## Uses of Artificial Intelligence in Remote Sensing
 
