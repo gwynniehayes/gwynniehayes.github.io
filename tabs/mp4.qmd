@@ -30,6 +30,7 @@ library(ggthemes)
 library(widyr)
 library(ggraph)
 library(igraph)
+library(stopwords)
 ```
 
 ```{r}

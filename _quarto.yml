@@ -16,6 +16,7 @@ website:
           - tabs/miniproj2.qmd
           - tabs/salmon_tummys.Rmd
           - tabs/mp4.qmd
+          - tabs/Wildfires.qmd
 
 
         

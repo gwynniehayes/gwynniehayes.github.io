@@ -17,6 +17,7 @@ library(viridis)
 library(htmltools)
 library(glue)
 library(leaflet)
+library(mapproj)
 
 us_states <- map_data("state")
 

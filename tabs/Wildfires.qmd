@@ -1,0 +1,9 @@
+---
+title: "Wildfires"
+format: html
+---
+
+<iframe src="https://gwynyn.shinyapps.io/Wildfires/" width="1100" height="700">
+
+</iframe>
+
