@@ -18,7 +18,7 @@ library(tmap)
 
 ```{r,echo=FALSE,message=FALSE}
 
-salmon_stomachs <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io/tabs/Data/Stomachs.csv") |>
+salmon_stomachs <- read_csv("~/Desktop/gwynniehayes.github.io/tabs/Data/Stomachs.csv") |>
   rename(latitude = `Start Latitude Decimal Degrees North`, 
          longitude = `Start Longitude Decimal Degrees West`,
          field_length_mm = `Salmon Field Length Millimeters`,
@@ -42,7 +42,7 @@ salmon_stomachs <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io
          -`Start Time Local`
          )
 
-  salmon_data_extra <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io/tabs/Data/Metrics.csv") |>
+  salmon_data_extra <- read_csv("~/Desktop/gwynniehayes.github.io/tabs/Data/Metrics.csv") |>
   filter(`Common Name` == "Chinook salmon") |>
   select(`Salmon Id Number`, 
          `Common Name`, 

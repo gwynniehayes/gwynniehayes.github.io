@@ -1,12 +1,10 @@
 ---
-title: "Homie Page"
-
 toc: false
 search: false
-about: 
-  template: jolla
-  image-shape: rounded
-  image-width: 20em
+title: Gwynyn Hayes
+image: fake-headshot.jpeg
+about:
+  template: trestles
   links:
     - text: Github
       href: https://github.com/gwynniehayes/gwynniehayes.github.io
@@ -18,26 +16,19 @@ editor_options:
   viewer: Source
 ---
 
-::: text-center
-(homie page, its like a home page but better!)
-:::
+:::{#hero-heading}
 
-## Benny! {.text-center}
+Intro blah blah blah
 
-![](tabs/media/benny.jpeg){.rounded-img width="409"}
+## Education
 
-::: text-center
-This is Benny!
+Saint Olaf College | Northfield, MN
+B.A. Computer Science | Sept 2022 - May 2026
 
-He is really fuzzy and large!
-:::
+## Experience
 
-## Walter! {.text-center}
+Costumes
+Nature Center
+Orkila
 
-![](tabs/media/walter.jpeg){.rounded-img width="409"}
-
-::: text-center
-This is Walter!
-
-He is very loud. (It's annoying)
 :::

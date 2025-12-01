@@ -26,7 +26,7 @@ library(leaflet)
 library(tmap)
 library(tidyverse)
 
-case_studies <- read_csv("~/Desktop/15/SDS264/projects/gwynniehayes.github.io/tabs/CS263Project/CS263Case Studies.csv") |>
+case_studies <- read_csv("~/Desktop/gwynniehayes.github.io/tabs/CS263Project/CS263caseStudies.csv") |>
   janitor::clean_names()
 ```
 
