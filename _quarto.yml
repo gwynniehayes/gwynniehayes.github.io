@@ -8,15 +8,19 @@ website:
     right:
       - href: index.qmd
       - href: about.qmd
-      - href: tabs/who_is_gwynnie.qmd
-      - href: csproject.qmd
-      - text: Projects
+      - text: Computer Science
+        menu: 
+          - csproject.qmd
+      - text: Data Science
         menu: 
           - tabs/miniproj1.qmd
           - tabs/miniproj2.qmd
           - tabs/salmon_tummys.Rmd
           - tabs/mp4.qmd
           - tabs/Wildfires.qmd
+      - text: Statistics 
+        menu: 
+          - tabs/Stats2Project/finalProject.Rmd
 
 
         

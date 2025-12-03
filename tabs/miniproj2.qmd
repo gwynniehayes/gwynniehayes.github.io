@@ -1,5 +1,5 @@
 ---
-title: "Mini Project #2"
+title: "Wildfire Web Scraping"
 author: "Gwynnie and Aria"
 format: html
 editor_options: 

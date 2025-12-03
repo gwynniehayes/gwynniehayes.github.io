@@ -1,0 +1,26 @@
+
+Uncleaned and Cleaned data are in the data folder!
+
+Stage-2.pdf has our main EDA write up
+
+EDA.rmd has all of our graph EDA, even if its not in stage 2
+
+
+Variable Descriptions:
+- Head.width: measured at the corners of the jaw, millimeter
+- Head.length: measured from the jaw joint to the tip of the snout, millimeter
+- Eye.length: measured from the anterior corned to the posterior corner of the eyelids, millimeter
+- Femur.length: the length of the upper leg, measured from the distal edge of the knee to the vent, millimeter
+- SVL: snout to vent length, millimeter
+- Inter-orbital: distance between the eyes, measured at the anterior corners, millimeter
+- Inter-narial: distance between the nares, millimeters
+- Family: the taxonomic family to which the frog species is assigned
+
+              _         _
+  __   ___.--'_`.     .'_`--.___   __
+ ( _`.'. -   'o` )   ( 'o`   - .`.'_ )
+ _\.'_'      _.-'     `-._      `_`./_
+( \`. )    //\`         '/\\    ( .'/ )
+ \_`-'`---'\\__,       ,__//`---'`-'_/
+  \`        `-\         /-'        '/
+   `                               ' 

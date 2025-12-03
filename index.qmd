@@ -18,7 +18,7 @@ editor_options:
 
 :::{#hero-heading}
 
-Intro blah blah blah
+My name is Gwynyn Hayes, I am a senior at St. Olaf College studying Computer Science with minors in Statistics and Data Science and Environmental Studies. I am interested in GIS, water quality, river restoration and storm water management and any way that these topics could relate to data. I have done a lot of research on the water quality of the Nisqually River in Washington State as well and being involved with the restoration of the land surrounding the river. 
 
 ## Education
 

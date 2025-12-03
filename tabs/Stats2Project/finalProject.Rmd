@@ -1,0 +1,366 @@
+---
+title: "Frog vs Toad Identification"
+author: "Aria Whalen and Gwynnie Hayes"
+output: 
+  pdf_document:
+    extra_dependencies: ["float"]
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "", warning = FALSE)
+```
+
+```{r, echo = FALSE, message = FALSE}
+library(ggResidpanel)
+library(patchwork)
+library(kableExtra)
+library(Stat2Data)
+library(tidyverse)
+library(janitor)
+library(broom)
+library(tinytex)
+library(patchwork)
+library(ggthemes)
+
+
+frog_data <- read_csv("https://raw.githubusercontent.com/StarryAri7/SDS264_F24/refs/heads/main/data/measurements.csv") |> clean_names() # this cleans the names
+
+measured <- read_csv("~/Desktop/gwynniehayes.github.io/tabs/Stats2Project/data/measurement table.csv") |> select(1,2)
+
+
+twofrogs <- frog_data |> 
+  filter(family == "Hylidae" | # keeps rows with tree frogs + friends
+         family == "Bufonidae") # also keeps true toad rows
+
+twofrogs2 <- twofrogs |> 
+  # selects just relevant variables
+  select(svl:family) |>
+  # renames variables to be easily understood
+  mutate(family = fct_recode(family, "Tree Frogs" = "Hylidae", 
+                                     "True Toads" = "Bufonidae"))
+
+ratio_frogs <- twofrogs2 |> mutate(head_length_ratio = head_length / svl,
+                            head_width_ratio =  head_width/svl,
+                            eye_length_ratio = eye_length / svl,
+                            femur_length_ratio =  femur_length/svl,
+                            inter_orbital_ratio = interorbital / svl,
+                            inter_narial_ratio =  internarial/svl,
+                            antebrachial_length_ratio = antebrachial_length/svl,
+                            tibio_fibula_ratio = tibio_fibula/svl,
+                            eye_naris_ratio = eye_naris/svl,
+                            naris_snout_ratio = naris_snout/svl)
+
+ratio_frogs <- ratio_frogs |>
+  mutate(family_logist = ifelse(family == "True Toads", 0, 1))
+sum_stats <- function(data, var, varname = NULL, levels) {
+  data |> summarize(
+  variable =  varname,
+	median = median({{ var }}, na.rm = TRUE),
+	sd = sd({{ var }}, na.rm = TRUE),
+	.groups = "drop"	
+  )
+}
+
+colors <-   c("#8D6736", "#5BB24D")
+colors2 <-   c("#5BB24D", "#8D6736")
+
+ratio_frogs <- ratio_frogs |> 
+  mutate(antebrachial_length_ratio_5pcnt = antebrachial_length_ratio * 20,
+         head_length_ratio_5pcnt = head_length_ratio * 20,
+         femur_length_ratio_5pcnt = femur_length_ratio * 20,
+         tibio_fibula_ratio_5pcnt = tibio_fibula_ratio * 20,
+         eye_length_ratio_5pcnt = eye_length_ratio * 20,
+         naris_snout_ratio_5pcnt = naris_snout_ratio * 20)
+
+ratio_frogs2 <- ratio_frogs |>
+  rename("Lower Arm Length Ratio" = "antebrachial_length_ratio_5pcnt",
+         "Head Length Ratio" = "head_length_ratio_5pcnt",
+         "Lower Leg Length Ratio" = "tibio_fibula_ratio_5pcnt",
+         "Snout-Vent Length" = "svl",
+         "Eye Length Ratio" = "eye_length_ratio_5pcnt",
+         "Naris-Snout Length Ratio" = "naris_snout_ratio_5pcnt") |> drop_na()
+
+```
+
+## Introduction
+
+In order to identify unique species, researchers will often use a variety of methods, including size, color, behavior, and sound. Size measurements can be especially important when a specimen is visually difficult to differentiate from other species or deceased. Identification of species is crucial for conservation, as different species and families will require a unique habitat for their lifestyle and simply put, we cannot even begin to try and conserve a species if we don't know what they are. Frog populations have been declining for decades (Wake, 1991), often even without a specific known cause. Utilizing body measurements of previously deceased frog specimens we seek to build a model that can identify a species based off a handful of measurements. Body size measurements are also known to be associated with niche partioning in a variety of other animals, and a body size based model could help explore which body parts are notably different between families.
+
+We chose to explore 2 frogs families colloquially known to contain vastly different physical characteristics and habitats: Hylidae (tree frogs) and Bufonidae (true toads). Frogs in the family of Hylidae are known to live up in the trees of forested environments, though some live in ponds and swamps. They are known to be long and skinny, and have distinct toe pads that assist with climbing and strong legs for jumping among the trees (AmphibiaWeb). Frogs in the family of Bufonidae are typically known to be terrestrial/ground dwelling, they dig burrows and prefer moist shady environments. (Bufonidae).
+
+Both families have been studied extensively as focuses of work in conservation, and are known to use their habitats very specifically. Sanchez et. al (2010) found that the micro-habitats of *Rhinella fernandezae* (a species in the Bufonidae family) are not randomly chosen, but a highly specific combination of soil hardness and broad leaf plant cover. The choice of soil hardness is especially linked to their tendancy for burrowing. Paris (2000) found that the number of *Litoria pearsoniana* (a species in the Hylidae family) were highly correlated with the size of the local stream and presence of palm trees, the latter of which is a limiting factor which is actively threatened by forest clear cutting for cattle grazing. These papers show that even small changes to an environment can have massive effects on the number of species in an area.
+
+![A: Snout-Vent Length (SVL), B: Lower Arm Length, C: Lower Leg Length (Tibia), Eye Length, Head Length --- Guayasamin et al., 2022](data/fig-1-full.png){.rounded-img width="286"}
+
+```{r, echo=FALSE}
+kable(measured, caption = "Description of Relevant Variables") 
+```
+
+## Materials and Methods
+
+These data were collected by researchers at the University of Michigan Museum of Zoology (UMMS) Division of Reptiles and Amphibians, from specimens in their collection. The collection includes 2600 individual specimens that contain 757 different species from 52 different families. The frogs were measured in millimeters using digital calipers to determine length and width of each body parts. Each row represents a unique frog and only adult frogs were measured. Some species are represented as many as 9 times, though many individuals have only 5 or less observations, with this in mind we chose to represent the data on the family level.
+
+To explore these data for our research question (below) we had to do some data manipulation to put it in a workable state. First, the data were filtered to just include Hylidae and Bufonidae families and any NA's were removed, which lowered the data to 898 full rows. Families were also renamed to their common names, while Hylidae is technically a family of Tree frogs **and their allies**, we just chose to name them tree frogs for ease of understandability. Then, to remove size based colinearity all variables were divided by SVL; as a result, all explanatory variables in the project are described as "relative to body size", and unit-less. For our logistic tests, we also multiplied the explanatory variables by 20 to display them as a 5% ratio to body size, to account for small ratio values. Summary statitics are a median (to account for high amount of outliers) with standard deviation to define spread. Lastly, we used this data to identify an optimal generalized logistic model using a stepwise analysis in both directions, which uses a two-sided p-value.
+
+## Results
+
+```{r, echo = FALSE}
+toad1 <- ratio_frogs |> group_by(family) |> sum_stats(head_width, varname = "Head Width")
+toad2 <- ratio_frogs |> group_by(family) |> sum_stats(head_length, varname = "Head Length")
+toad3 <- ratio_frogs |> group_by(family) |> sum_stats(eye_length, varname = "Eye Length") 
+toad4 <- ratio_frogs |> group_by(family) |> sum_stats(femur_length, varname = "Femur Length") 
+toad5 <- ratio_frogs |> group_by(family) |> sum_stats(svl, varname = "Snout-Vent Length") 
+toad6 <- ratio_frogs |> group_by(family) |> sum_stats(interorbital, varname = "Inter-Oribital Length") 
+toad7 <- ratio_frogs |> group_by(family) |> sum_stats(internarial, varname = "Inter-Narial Distance")
+toad8 <- ratio_frogs |> group_by(family) |> sum_stats(antebrachial_length, varname = "Antebrachial Length")
+toad9 <- ratio_frogs |> group_by(family) |> sum_stats(tibio_fibula, varname = "Tibio Fibula Length")
+toad10 <- ratio_frogs |> group_by(family) |> sum_stats(eye_naris, varname = "Eye Naris Length Length")
+toad11 <- ratio_frogs |> group_by(family) |> sum_stats(naris_snout, varname = "Naris Snout Length")
+
+Rtoad1 <- ratio_frogs |> group_by(family) |> sum_stats(head_width_ratio, varname = "Head Width Ratio")
+Rtoad2 <- ratio_frogs |> group_by(family) |> sum_stats(head_length_ratio, varname = "Head Length Ratio") 
+Rtoad3 <- ratio_frogs |> group_by(family) |> sum_stats(eye_length_ratio, varname = "Eye Length Ratio") 
+Rtoad4 <- ratio_frogs |> group_by(family) |> sum_stats(femur_length_ratio, varname = "Femur Length Ratio") 
+Rtoad5 <- ratio_frogs |> group_by(family) |> sum_stats(svl, varname = "Snout-Vent Length Ratio") 
+Rtoad6 <- ratio_frogs |> group_by(family) |> sum_stats(inter_orbital_ratio, varname = "Inter-Oribital Length Ratio") 
+Rtoad7 <- ratio_frogs |> group_by(family) |> sum_stats(inter_narial_ratio, varname = "Inter-Narial Distance Ratio")
+Rtoad8 <- ratio_frogs |> group_by(family) |> sum_stats(antebrachial_length_ratio, varname = "Antebrachial Length Ratio")
+Rtoad9 <- ratio_frogs |> group_by(family) |> sum_stats(tibio_fibula_ratio, varname = "Tibio Fibula Length Ratio")
+Rtoad10 <- ratio_frogs |> group_by(family) |> sum_stats(eye_naris_ratio, varname = "Eye Naris Length Length Ratio")
+Rtoad11 <- ratio_frogs |> group_by(family) |> sum_stats(naris_snout_ratio, varname = "Naris Snout Length Ratio")
+
+table <- bind_rows(toad9, toad8, toad2, toad3, toad11, toad5, toad1, toad4, toad6, toad7, toad10) 
+
+table2 <- bind_rows(Rtoad9, Rtoad8, Rtoad2, Rtoad3,
+                    Rtoad11, Rtoad1, Rtoad4,
+                    Rtoad6, Rtoad7, Rtoad10) 
+
+
+cols_order <- unlist(lapply(c("True Toads", "Tree Frogs"), function(x) paste(x, c("median", "sd"), sep = "_")))
+
+
+data_wide <- table %>% 
+  pivot_wider(names_from = "family", values_from = c(median, sd),
+              names_glue = "{family}_{.value}") |>
+  select(all_of(c("variable", cols_order)))
+
+data_wide2 <- table2 %>% 
+  pivot_wider(names_from = "family", values_from = c(median, sd),
+              names_glue = "{family}_{.value}") |>
+  select(all_of(c("variable", cols_order)))
+
+
+data_wide <- knitr::kable(data_wide, digits = 1,
+                          caption = "Summary of All Body Measurements for 
+                                     Frogs + Toads",
+                          col.names = c("Measurements", "Median","Std. Dev.",
+                                        "Median","Std. Dev."))
+
+data_wide2 <- knitr::kable(data_wide2, digits = 3, 
+                           caption = "Summary of All Body Measurements (but SVL) for Frogs + Toads \\textbf{as a Ratio of Body Size}",
+                          col.names = c("Measurements", "Median","Std. Dev.",
+                                        "Median","Std. Dev."))
+
+```
+
+```{r, echo = FALSE}
+ratio_frogs |> drop_na() |>
+  mutate(family = fct_relevel(family, "Tree Frogs", "True Toads")) |>
+  group_by(family) |>
+  summarize(n=n()) |>
+  mutate(Percent = n/sum(n) * 100) |> kable(digits=1, caption = "Number of rows and % of dataset by Family")
+```
+
+```{r, echo = FALSE}
+
+add_header_above(data_wide, c(" ", "Toads" = 2, "Frogs" = 2)) |>
+  kable_styling(bootstrap_options = "striped")
+```
+
+Table 3 defines the summary of all variables that were looked at in the dataset. The first 6 rows are those identified as useful to the model by the stepwise analysis, in order of importance. The remaining 5 variables were marked as not statistically significant to the model. Though not a rule, variables whose SD is less than half of the median are more significant, and those where the SD is over half of the median are less or in-significant.
+
+```{r, echo = FALSE}
+
+add_header_above(data_wide2, c(" ", "Toads" = 2, "Frogs" = 2)) |>
+  kable_styling(bootstrap_options = "striped")
+```
+
+Table 4 displays all variables divided by svl as a ratio of body size. These numbers are decimals and unitless, and represent a similar trend to the un-ratioed variables.
+
+```{r, include = FALSE}
+# library(plotly)
+# 
+# plot_ly(data = ratio_frogs,
+#         x = ~tibio_fibula_ratio,
+#         y = ~antebrachial_length_ratio,
+#         z = ~head_length_ratio,
+#         type = "scatter3d", mode = "markers",
+#         color = ~family, colors = colors, alpha = 1)
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 8, fig.align='center',fig.cap = "Boxplot of all Ratioed Variables, seperated by family. Most pairs have IQR overalap, though medians are statistically different in all plots (all p-values 1.4e-13 or lower). SVL represented in corner due to scale inequality, measured in millimeters -- all other measurements unitless."}
+
+p1 <- ratio_frogs |>
+  rename("Lower Arm Length Ratio" = "antebrachial_length_ratio_5pcnt",
+         "Head Length Ratio" = "head_length_ratio_5pcnt",
+         "Femur Length Ratio" = "femur_length_ratio_5pcnt",
+         "Lower Leg Length Ratio" = "tibio_fibula_ratio_5pcnt",
+         "Snout-Vent Length" = "svl",
+         "Eye Length Ratio" = "eye_length_ratio_5pcnt",
+         "Naris-Snout Length Ratio" = "naris_snout_ratio_5pcnt") |>
+pivot_longer(cols = c(`Lower Leg Length Ratio`, `Head Length Ratio`,
+                                     `Lower Arm Length Ratio`, 
+                                     `Eye Length Ratio`, 
+                                     `Naris-Snout Length Ratio`), 
+	          names_to = "Vars", values_to = "Count") |>
+  mutate(Vars = fct_relevel(Vars, "Lower Leg Length Ratio", 
+                                  "Lower Arm Length Ratio",
+                                  "Head Length Ratio", "Eye Length Ratio",
+                                  "Naris-Snout Length Ratio")) |>
+ggplot(aes(x = Vars, y = Count, fill = family)) + geom_boxplot() + 
+  scale_fill_manual(values = colors) +
+  ggthemes::theme_clean() +
+  theme(axis.text.x = element_text(angle = 10, vjust = 0.4),
+        axis.title.x = element_text(vjust=-0.5)) +
+   theme(legend.position = "bottom") +
+  labs(y = "Length as Ratio to Body Size",
+       x = "Measurement Locations", 
+       fill = "Family")
+
+p2 <- ggplot(data = ratio_frogs, aes(y = svl, x = family, fill = family)) +
+  geom_boxplot(show.legend = F) + 
+  scale_fill_manual(values = colors) +
+    ggthemes::theme_clean() +
+   labs(y = "Snout-Vent Length",
+       x = "Family")
+
+p1 + inset_element(p2, left = 0.7, bottom = 0.4, right = 1, top = 1)
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 12, fig.cap = "Density plots for all six variables in the model, showing individual probabilities of a specimin being a frog or toad across varying body measurement lengths"}
+
+p5 <- ratio_frogs2 |> mutate(family = as.character(family)) |>
+  ggplot(aes(x = tibio_fibula_ratio, fill = family, group = family)) +
+  geom_density(position = 'fill', alpha = 0.5, show.legend = F) + 
+  scale_fill_manual(values = colors2) +
+  labs(x = "Lower Leg Length (relative to body size)") +
+  theme_clean()
+
+p6 <- ratio_frogs2 |> mutate(family = as.character(family)) |>
+  ggplot(aes(x = antebrachial_length_ratio, fill = family, group = family)) +
+  geom_density(position = 'fill', alpha = 0.5, show.legend = F) + 
+  scale_fill_manual(values = colors2) +
+  labs(x = "Lower Arm Length (relative to body size)") +
+  theme_clean()
+
+
+p7 <-ratio_frogs2 |> mutate(family = as.character(family)) |>
+  ggplot(aes(x = head_length_ratio, fill = family, group = family)) +
+  geom_density(position = 'fill', alpha = 0.5) + 
+  scale_fill_manual(values = colors2) +
+  labs(x = "Head Length (relative to body size)") +
+  theme_clean()
+
+p8 <- ratio_frogs2 |> mutate(family = as.character(family)) |>
+  ggplot(aes(x = eye_length_ratio, fill = family, group = family)) +
+  geom_density(position = 'fill', alpha = 0.5, show.legend = F) + 
+  scale_fill_manual(values = colors2) +
+  labs(x = "Eye Length (relative to body size)") +
+  theme_clean()
+
+p9 <- ratio_frogs2 |> mutate(family = as.character(family)) |>
+  ggplot(aes(x = naris_snout_ratio, fill = family, group = family)) +
+  geom_density(position = 'fill', alpha = 0.5, show.legend = F) + 
+  scale_fill_manual(values = colors2) +
+  labs(x = "Naris Snout Length (relative to body size)") +
+  theme_clean()
+
+p10 <-ratio_frogs2 |> mutate(family = as.character(family)) |>
+  ggplot(aes(x = `Snout-Vent Length`, fill = family, group = family)) +
+  geom_density(position = 'fill', alpha = 0.5) + 
+  scale_fill_manual(values = colors2) +
+  labs(x = "Snout Vent Length") +
+  theme_clean()
+
+
+
+patchwork <- (p5 + p6 + p7) / (p8 + p9 + p10)
+
+patchwork + 
+  plot_layout(guides = 'collect')
+
+
+
+```
+
+There are noticable differences between the families on an individual variable basis for all 6 measurements (Fig 1 + 2). The ratios of lower leg length and lower arm length especially, show clear distinctions between the two groups in both the boxplots and density curves. The ratio of head length shows a similar density plot to Eye length, though its more widely spread boxplot differentiates it. The ratios of eye length and naris-snout length show density plots that are not nearly as clean, and boxplots with medians that are very close together, explaining why they are less useful to the model. Lastly, though SVL displays a large difference in its scatterplot, the density plot shows that the variable is not as clear cut as one might assume.
+
+![Multiple angles of a 3d scatterplot using the 3 most impactful Variables](data/plotly.png){.rounded-img}
+
+There is a clear distinction between the two family groups (Fig. 4)
+
+```{r, echo = FALSE, message = FALSE}
+tidy(glm(family_logist ~  
+                        `Lower Leg Length Ratio` +
+                        `Lower Arm Length Ratio` +
+                        `Head Length Ratio` + 
+                        `Eye Length Ratio` + 
+                        `Naris-Snout Length Ratio` +
+                        `Snout-Vent Length`,
+         data = ratio_frogs2, family = binomial)) |> 
+ # mutate(signif = sapply(p.value, function(x) make_stars(x))) |>
+  kable(digits = c(1,3,2,2,3),
+        caption = "Logit of Family as a 5% Ratio of Body Size, AIC = 122",
+        col.names = c("Variable", "Estimate", "Standard Error", "Z-value", "P-value")) 
+```
+
+Model Interpretations:
+
+-   Intercept: odds of being a tree frog when body ratios of Lower Leg Length, Lower Arm Length, Head Length, Eye Length, Naris-Snout Length, Snout-Vent Length are 0 are 0.024:1.
+
+-   Lower Leg Length Ratio: When all other variables are held constant, for every 0.05 increase in lower leg length with respect to body size, the odds of being a tree frog change by 21.64 times.
+
+-   Lower Arm Length Ratio: When all other variables are held constant, for every 0.05 increase in lower arm length with respect to body size, the odds of being a tree frog change by 0.001 times.
+
+-   Head Length Ratio: When all other variables are held constant, for every 0.05 increase in head length with respect to body size, the odds of being a tree frog change by 11.00 times.
+
+-   Eye Length Ratio: When all other variables are held constant, for every 0.05 increase in eye length with respect to body size, the odds of being a tree frog change by 0.086 times.
+
+-   Naris-Snout Length Ratio: When all other variables are held constant, for every 0.05 increase in naris-snout length with respect to body size the odds of being a tree frog change by 0.017 times.
+
+-   Snout-Vent Length: When all other variables are held constant, for every 1.0 increase in snout-vent length by 1 millimeter, the odds of being a tree frog change by 0.96 times
+
+**Discussion**
+
+Our goal of this project was to find the best morphological traits of the order Anura to predict if a specimen would be a true toad or a tree frog. From this statistical analysis we found that the best way to predict a frog or a toad is by using 6 measurements: Body Size Ratios of lower leg length, lower arm length, head length, eye length naris-snout length, and an unratioed Snout-Vent Length. It is important to note that the first 3 variables: lower leg length, lower arm length and head length, are by far more important to the model than the last 3. *Each* of these three variables lowered the overal AIC (variability explained by the model) by many hundreds, wheras the addition of the latter 3 variables only lowered the AIC by a cumulative of 16.
+
+Interestingly, though it would seem that having longer eye length or naris snout length, with respect to body size, would raise the odds of being a tree frog (Figs. 2 + 3), the model displays the opposite, as the length increases the odds of being a tree frog is smaller. This is likely due to the minimial variability in these variables, and the way they interact with the other variables in the full model. If you have a full specimen we reccomend trying to use all 6 variables, but in a pinch, the measurements of lower leg, lower arm, and head length relative to body size will suffice.
+
+Though we used a step-wise exploratory method for arriving on our model, rather than testing specific variables of interest, the fact that measurements of lower leg length and lower arm length make a lot of sense in the context of the data. As discussed earlier, one of the most unique features to the tree frogs are their strong jumping legs. The fact that the odds of being a tree frog change by 21.64 times for every .05 increase in relative lower leg length strongly affirms the claim by Paris (2000). Our model also stated that the odds of being a tree frog change by .001 times for every .05 increase in lower arm length as a ratio to body size. This means that the trait of longer lower arms is highly specialized to toads, which strongly corroborates the connection made by Sanchez et. al (2010) of soil hardness and burrowing habits, and is a clear distinction between the two families.
+
+One potential confounding variable to our data is that we do not know how these specimens were stored. The authors did not clairfy if specimins were stored in jars or as skeletons, this difference could warp measurements due to layers of skin and muscle, especially in smaller variables, such as naris-snout length. Furthermore, preserved specemins are known to shrink over time, despite the best preservation techniques, specimins of different ages could have shrunken or become deformed at different rates, warping them from their 'true' measurement, adding extra variability to the dataset.
+
+This model can be generalized to identify frogs that fall in the family of Hylidae or Bufonidae, which limits its ability to identify an unknown frog specemin, though if it is known to fall into one of those two families, it could be especially useful then. More complex models could also be made to narrow down a frog from a wider selction of families or species. The source of the data library of specemins is proudly boasted to be 'world wide' though our spececific data is not connected to a location, so it is hard to say where in the world we can generalize this data to. If we assume the sampling of species and locations is random though, it could be feasible to generalize it to any species within these two families around the world.
+
+One of the motivations behind our research was the declining population of frogs, which is still vastly misunderstood. With this analysis, we have identified some clear defining characteristcs to make the identification of diceased frogs easier. Furthermore, our model found clear evidence of family wide nich partioning in Tree frogs and True Toads. Tree frogs lower *legs* are longer and specialized for jumping between trees, while true toads lower *arms* are longer and specialized for digging burrows on the forest floor. Thus this model could be used to aid the conservation of frogs in a 2 fold manor. First, a specimen could be identified by a series of body measurements, and then linked to a location and larger dataset. Secondly, by identifying which traits are important in these specimins, we can begin to look for problems that relate to their specialization, such as in deforestatin or soil quality. This analysis could be done via a hot spot analysis, where a subject of interest is identified and then algorithmically analyzed to reveal spatial trends correlated and shows evidence of a phenomenon happening with a confidence level.
+
+Future logistic models should work to assess differentiations of other families, and potentially explore specimens on a species level.
+
+## Sources
+
+AmphibiaWeb—Hylidae. (n.d.). Retrieved May 16, 2025, from <https://amphibiaweb.org/lists/Hylidae.shtml>
+
+Andreas, M., Reiter, A., Cepáková, E., & Uhrin, M. (2013). Body size as an important factor determining trophic niche partitioning in three syntopic rhinolophid bat species. Biologia, 68(1), 170–175. <https://doi.org/10.2478/s11756-012-0139-1>
+
+Bufonidae (bufonidés, Bufonids, crapauds, Toads). (n.d.). Animal Diversity Web. Retrieved May 16, 2025, from <https://animaldiversity.org/accounts/Bufonidae/>
+
+Colloca, F., Carpentieri, P., Balestri, E., & Ardizzone, G. (2010). Food resource partitioning in a Mediterranean demersal fish assemblage: The effect of body size and niche width. Marine Biology, 157(3), 565–574. <https://doi.org/10.1007/s00227-009-1342-7>
+
+Parris, K. M. (2001). Distribution, habitat requirements and conservation of the cascade treefrog (Litoria pearsoniana, Anura: Hylidae). Biological Conservation, 99(3), 285–292. [https://doi.org/10.1016/S0006-3207(00)00194-4](https://doi.org/10.1016/S0006-3207(00)00194-4){.uri}
+
+Sanchez, L. C., Busch, M., & Madanes, N. (2010). Terrestrial habitat use by the burrowing toad, Rhinella fernandezae (Anura: Bufonidae). Folia Zoologica, 59(2), 122–128. <https://doi.org/10.25225/fozo.v59.i2.a7.2010>
+
+Wake, D. B. (1991). Declining Amphibian Populations. Science, 253(5022), 860–860. <https://doi.org/10.1126/science.253.5022.860>
