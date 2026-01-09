@@ -25,6 +25,7 @@ $magenta: #89023E;
 $green: #014d4e;
 $light-blue: #aed6f1;
 $teal: #0D5C63;
+$black: black;
 
 // Base document colors
 $navbar-bg: $magenta; // navbar
@@ -34,8 +35,9 @@ $body-bg: $light-pink; // page background
 $body-color: $green; // page text 
 $footer-bg: $magenta; // footer 
 $link-color: $green; // hyperlinks 
-$figure-caption-color: $green;
-$table-caption-color: $green;
+$figure-caption-color: $black;
+$table-caption-color: $black;
+$image-caption-color: $black;
 
 // Inline code
 $code-bg: $magenta; // inline code background color

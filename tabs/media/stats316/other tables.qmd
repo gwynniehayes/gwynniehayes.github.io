@@ -1,0 +1,38 @@
+---
+title: "other tables"
+format: html
+---
+
+```{r}
+kable(model_output, caption = "Table 2. Final Model Output Summary; *Interpreted Terms") 
+```
+
+```{r}
+kable(model_output, caption = "Table 2. Final Model Output Summary; *Interpreted Terms") |>
+  kable_styling(bootstrap_options = "bordered") |>
+  column_spec(1, extra_css = "border-right: 2px solid #000000;") |>
+  column_spec(2, extra_css = "border-right: 2px solid #000000;") |>
+  column_spec(3, extra_css = "border-right: 2px solid #000000;") |>
+  column_spec(4, extra_css = "border-right: 2px solid #000000;") |>
+  column_spec(5, extra_css = "border-right: 2px solid #000000;") |>
+  column_spec(1, extra_css = "border-left: 2px solid #000000;") |>
+  row_spec(1, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(2, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(3, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(4, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(5, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(6, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(7, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(8, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(9, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(10, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(11, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(12, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(13, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(14, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(15, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(16, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(17, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(18, extra_css = "border-top: 2px solid #000000;") |>
+  row_spec(18, extra_css = "border-bottom: 2px solid #000000;")
+```

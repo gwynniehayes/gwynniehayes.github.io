@@ -21,6 +21,8 @@ website:
       - text: Statistics 
         menu: 
           - tabs/Stats2Project/finalProject.Rmd
+          - tabs/stats3project.qmd
+          - tabs/ADMproject.qmd
 
 
         

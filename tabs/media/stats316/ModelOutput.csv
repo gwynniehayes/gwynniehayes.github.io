@@ -1,0 +1,19 @@
+Term,Estimate,Exponentiated,Std. Error,P-Value
+*Intercept,-2.55,0.078,0.384,3.000 × 10⁻¹¹
+Democracy Index (DI),0.042,1.043,0.017,0.013
+*Centered Meeting Year,0.034,1.035,0.013,0.006
+Logged GDP per Capita,-0.036,–,0.051,0.474
+*Human Rights Index (HRI),1.022,2.778,0.246,3.260 × 10⁻⁵
+Northern America,0.984,2.676,0.456,0.031
+Latin America & The Caribbean,0.541,1.718,0.163,0.0009
+Asia,0.369,1.447,0.152,0.015
+*Europe,1.06,2.886,0.197,7.190 × 10⁻⁸
+Oceania,0.563,1.755,0.298,0.059
+Centered Meeting Year × Logged GDP per Capita,0.004,–,0.002,0.028
+Centered Meeting Year × Human Rights Index (HRI),-0.021,0.98,0.008,0.008
+Centered Meeting Year × Northern America,-0.034,0.966,0.01,0.0009
+Centered Meeting Year × Latin America & The Caribbean,-0.009,0.991,0.005,0.073
+Centered Meeting Year × Asia,-0.023,0.977,0.005,1.410 × 10⁻⁶
+*Centered Meeting Year × Europe,-0.034,0.967,0.006,3.32 × 10⁻⁸
+Centered Meeting Year × Oceania,-0.015,0.985,0.009,0.09
+𝜎²,0.127,–,–,–
