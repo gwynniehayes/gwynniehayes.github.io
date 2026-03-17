@@ -2,8 +2,6 @@
 title: "Resume"
 ---
 
-**Gwynyn Hayes** \| Eatonville, WA \| (219) 921-9970 \| hayes5[\@stolaf.edu](mailto:Math1@stolaf.edu) \|
-
 **EDUCATION:**
 
 St. Olaf College, Northfield, MN\| Expected Graduation: May 2026
@@ -18,7 +16,7 @@ Technical: Intermediate proficiency in R and Python; basic proficiency in Go, Ru
 
 Languages: English (native fluency written/spoken); French (basic written, conversational spoken) 
 
-***Job Experience***
+**JOB EXPERIENCE:**
 
 ::: panel-tabset
 ## Tacoma Nature Center
