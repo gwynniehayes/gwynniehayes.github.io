@@ -1,9 +1,14 @@
 ---
 title: "other tables"
 format: html
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
+library(kableExtra)
+library(tidyverse)
+
 kable(model_output, caption = "Table 2. Final Model Output Summary; *Interpreted Terms") 
 ```
 
