@@ -32,7 +32,7 @@ $white: white;
 $navbar-bg: $magenta; // navbar
 $navbar-fg: $orange; // navbar foreground elements
 $navbar-hl: $light-blue; // highlight color when hovering over navbar links
-$body-bg: $white; // page background 
+$body-bg: $light-pink; // page background 
 $body-color: $green; // page text 
 $footer-bg: $magenta; // footer 
 $link-color: $green; // hyperlinks 
@@ -42,7 +42,7 @@ $image-caption-color: $black;
 
 // Inline code
 $code-bg: $magenta; // inline code background color
-$code-color: $light-blue; // inline code text color
+$code-color: $black; // inline code text color
 
 table caption {
   color: $table-caption-color;
