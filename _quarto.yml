@@ -11,6 +11,7 @@ website:
       - text: Computer Science
         menu: 
           - csproject.qmd
+          - cs200_project.qmd
       - text: Data Science
         menu: 
           - tabs/miniproj1.qmd
@@ -22,7 +23,7 @@ website:
         menu: 
           - tabs/Stats2Project/finalProject.Rmd
           - tabs/stats3project.qmd
-          - tabs/ADMproject.qmd
+          
 
 
         
