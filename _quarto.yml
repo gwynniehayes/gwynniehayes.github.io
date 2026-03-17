@@ -11,7 +11,7 @@ website:
       - text: Computer Science
         menu: 
           - csproject.qmd
-          - cs200_project.qmd
+          - tabs/Yarn!.qmd
       - text: Data Science
         menu: 
           - tabs/miniproj1.qmd

@@ -9,6 +9,8 @@ editor_options:
 library(kableExtra)
 library(tidyverse)
 
+model_output <- read_csv("~/Desktop/gwynniehayes.github.io/tabs/media/stats316/ModelOutput.csv")
+
 kable(model_output, caption = "Table 2. Final Model Output Summary; *Interpreted Terms") 
 ```
 
